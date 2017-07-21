@@ -271,9 +271,8 @@ namespace EA.Model
 
             }
             catch (Exception ex)
-            {XtraMessageBox.Show(ex.ToString());
+            {
                 new ErrorSqlModel().WriteErrorOnSql(ex);
-                
                 return 0;
             }
         }

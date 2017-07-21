@@ -3,23 +3,32 @@ using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EA.Data;
+using EA.Model;
 
 namespace EA.Form
 {
     public partial class FileLoadForm : XtraForm
     {
-        public FileLoadForm()
+        private readonly int _cardId;
+
+        public FileLoadForm(int cardId)
         {
+            _cardId = cardId;
             InitializeComponent();
         }
 
+        private void FileLoadForm_Load(object sender, EventArgs e)
+        {
+            lookUpEditDocumentType.Properties.DataSource = new FileModel().GetFileTypes();
+            lookUpEditDraftTypes.Properties.DataSource = new DrawingModel().GetDraftTypes();
+        }
 
         private void buttonEditFilePath_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         #region
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.InitialDirectory = "c:\\";
-            dlg.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            dlg.Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*";
             dlg.FilterIndex = 2;
             dlg.RestoreDirectory = true;
 
@@ -28,6 +37,8 @@ namespace EA.Form
                 try
                 {
                     buttonEditFilePath.Text = dlg.FileName;
+                    textEditFileExtension.Text = Path.GetExtension(dlg.FileName);
+                    textEditFileSize.Text = (new FileInfo(dlg.FileName).Length / 1024) + @" Кб";
                 }
                 catch (Exception ex)
                 {
@@ -75,9 +86,19 @@ namespace EA.Form
             fileData.UId = Guid.NewGuid();
             fileData.Name = textEditFileName.Text;
             fileData.Description = memoEditFileDescription.Text;
-            fileData.ExtensionId = lookUpEditFileExtention.EditValue as int?;
+            fileData.ExtensionId = lookUpEditDocumentType.EditValue as int?;
+            fileData.FileType = lookUpEditDocumentType.EditValue as int?;
             fileData.Content = ReadFile(buttonEditFilePath.Text);
             fileData.Size = new FileInfo(buttonEditFilePath.Text).Length.ToString();
+            fileData.ExtensionName = textEditFileExtension.Text;
+            fileData.CardId = _cardId;
+            fileData.Owner = Environment.UserName;
+            fileData.ExpireDate = dateEditExpireDate.EditValue as DateTime?;
+            fileData.DraftTypeId = lookUpEditDraftTypes.EditValue as int?;
+            if (_cardId == 0) return;
+            new FileModel().UploadFileToSql(fileData);
         }
+
+        
     }
 }

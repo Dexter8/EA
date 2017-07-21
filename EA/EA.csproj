@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Card.cs" />
+    <Compile Include="Data\FileType.cs" />
     <Compile Include="Data\DraftType.cs" />
     <Compile Include="Data\DrawingViewLog.cs" />
     <Compile Include="Data\Enums\CardEditModeEnum.cs" />

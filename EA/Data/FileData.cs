@@ -11,7 +11,7 @@ namespace EA.Data
         public int Id { get; set; }
 
         public int? ParentId { get; set; }
-
+        public int? DraftTypeId { get; set; }
         public string Path { get; set; }
         public int? TypeId { get; set; }
         public string TypeName { get; set; }
@@ -19,6 +19,7 @@ namespace EA.Data
 
 
         public string Name { get; set; }
+        public DateTime? ExpireDate { get; set; }
         
         public string Description { get; set; }
 
@@ -46,6 +47,7 @@ namespace EA.Data
         public int? Version { get; set; }
         public DateTime? LastEditDate { get; set; }
         public string Owner { get; set; }
+        public int? FileType { get; set; }
 
     }
 }

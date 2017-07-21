@@ -4,12 +4,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using DevExpress.XtraEditors;
 using EA.Data;
-using Ionic.Zip;
 using Sqllib.AdoNetSqlService;
 
 namespace EA.Model
@@ -94,7 +90,7 @@ namespace EA.Model
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message);
+                new ErrorSqlModel().WriteErrorOnSql(ex);
                 throw;
             }
         }
@@ -129,7 +125,7 @@ namespace EA.Model
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message);
+                new ErrorSqlModel().WriteErrorOnSql(ex);
                 throw;
             }
             return Stream.Null;
@@ -145,20 +141,24 @@ namespace EA.Model
         public bool UploadFileToSql(FileData fdata )
         #region
         {
+            //проверка на название
+            //проверка по хешу/ сохранять хеш
+
+
             byte[] file;
             string query =
                 @"INSERT INTO [EA2015].[dbo].[FileContent] ([uid], [card_id], [content], [name], [description], [extention], [size], [owner]) 
                     VALUES (@uid, @card_id, @content, @name, @description, @extention, @size, @owner)";
             try
             {
-                using (var stream = new FileStream(fdata.Path, FileMode.Open, FileAccess.Read))
+                /*using (var stream = new FileStream(fdata.Path, FileMode.Open, FileAccess.Read))
                 {
                     using (var reader = new BinaryReader(stream))
                     {
                         file = reader.ReadBytes((int)stream.Length);
                         
                     }
-                }
+                }*/
 
                 using (SqlConnection connection = new SqlConnection(new SqlConnectionString().GetWinAuthConnectionString()))
                 {
@@ -173,26 +173,26 @@ namespace EA.Model
                         command.Parameters.Add(cardIdParam);
 
                         var contentParam = new SqlParameter("@content", SqlDbType.VarBinary);
-                        contentParam.Value = file;
+                        contentParam.Value = fdata.Content;
                         command.Parameters.Add(contentParam);
 
-                        var nameParam = new SqlParameter("@name", SqlDbType.Int);
+                        var nameParam = new SqlParameter("@name", SqlDbType.NVarChar);
                         nameParam.Value = fdata.Name;
                         command.Parameters.Add(nameParam);
 
-                        var descriptionParam = new SqlParameter("@description", SqlDbType.Int);
+                        var descriptionParam = new SqlParameter("@description", SqlDbType.NVarChar);
                         descriptionParam.Value = fdata.Description;
                         command.Parameters.Add(descriptionParam);
 
-                        var extentionParam = new SqlParameter("@extention", SqlDbType.Int);
+                        var extentionParam = new SqlParameter("@extention", SqlDbType.NVarChar);
                         extentionParam.Value = fdata.ExtensionName;
                         command.Parameters.Add(extentionParam);
 
-                        var sizeParam = new SqlParameter("@size", SqlDbType.Int);
-                        sizeParam.Value = fdata.Size;
+                        var sizeParam = new SqlParameter("@size", SqlDbType.NVarChar);
+                        sizeParam.Value = fdata.Content.Length.ToString();
                         command.Parameters.Add(sizeParam);
 
-                        var ownerParam = new SqlParameter("@owner", SqlDbType.Int);
+                        var ownerParam = new SqlParameter("@owner", SqlDbType.NVarChar);
                         ownerParam.Value = fdata.Owner;
                         command.Parameters.Add(ownerParam);
 
@@ -207,12 +207,44 @@ namespace EA.Model
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message);
+                new ErrorSqlModel().WriteErrorOnSql(ex);
                 return false;
             }
         }
         #endregion
 
+
+
+        /// <summary>
+        /// Получить список типов документа
+        /// </summary>
+        /// <returns></returns>
+        public List<FileType> GetFileTypes()
+        #region
+        {
+            List<FileType> types = new List<FileType>();
+            string query = "SELECT [id], [name], [short_name] FROM [EA2015].[dbo].[CFileType]";
+            try
+            {
+                DataTable table = new SqlHealper().ExecuteTable(query, new SqlConnectionString().GetWinAuthConnectionString());
+                foreach (DataRow row in table.Rows)
+                {
+                    types.Add(new FileType()
+                    {
+                        Id = Convert.ToInt32(row["id"]),
+                        Name = row["name"] as string,
+                        ShortName = row["short_name"] as string
+                    });
+                }
+                return types;
+            }
+            catch (Exception ex)
+            {
+                new ErrorSqlModel().WriteErrorOnSql(ex);
+                return null;
+            }
+        } 
+        #endregion
 
 
         public void SaveZipFile(Stream file)

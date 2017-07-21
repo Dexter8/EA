@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using DevExpress.XtraEditors;
 using EA.Data;
 using EA.Data.Enums;
@@ -26,7 +25,6 @@ namespace EA.Form
 
         private void CardEditForm_Load(object sender, EventArgs e)
         {
-            lookUpEditDraftTypes.Properties.DataSource = new DrawingModel().GetDraftTypes();
             repItemLookUpEditStatus.DataSource = new FileModel().GetStatusList();
 
 
@@ -52,7 +50,6 @@ namespace EA.Form
         private void FillEditors()
         {
             _folderId = _card.FolderId;
-            lookUpEditDraftTypes.EditValue = _card.DraftTypeId;
             textEditCode.EditValue = _card.Code;
             textEditName.EditValue = _card.Name;
             memoEditDescription.EditValue = _card.Description;
@@ -86,7 +83,7 @@ namespace EA.Form
         /// Сохранить новую карточку
         /// </summary>
         /// <returns></returns>
-        private bool SaveNewCard()
+        private bool SaveCard()
         #region
         {
             try
@@ -135,16 +132,16 @@ namespace EA.Form
             }
         }
         #endregion
-
-
-
-
+        
         private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (_mode == CardEditModeEnum.New) SaveNewCard();
-            else if (_mode == CardEditModeEnum.Edit) UpdateCard();
+            SaveCard();
             Close();
         }
+
+
+
+
 
         private void sButtonOpenPdf_Click(object sender, EventArgs e)
         {
@@ -155,7 +152,8 @@ namespace EA.Form
 
         private void sButtonLoadFile_Click(object sender, EventArgs e)
         {
-            new FileLoadForm().ShowDialog();
+            SaveCard();
+            new FileLoadForm(_cardId).ShowDialog();
         }
 
        

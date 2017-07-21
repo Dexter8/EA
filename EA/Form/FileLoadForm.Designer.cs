@@ -36,22 +36,32 @@
             this.memoEditFileDescription = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.lookUpEditFileExtention = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEditDocumentType = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.buttonUploadFile = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditFileExtension = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditFileSize = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEditExpireDate = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.lookUpEditDraftTypes = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditFilePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditFileName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditFileDescription.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditFileExtention.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDocumentType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFileExtension.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFileSize.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpireDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpireDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDraftTypes.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonEditFilePath
@@ -62,13 +72,14 @@
             this.buttonEditFilePath.Properties.Appearance.Options.UseFont = true;
             this.buttonEditFilePath.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEditFilePath.Properties.ReadOnly = true;
             this.buttonEditFilePath.Size = new System.Drawing.Size(588, 22);
             this.buttonEditFilePath.TabIndex = 0;
             this.buttonEditFilePath.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEditFilePath_ButtonClick);
             // 
             // progressBarControl1
             // 
-            this.progressBarControl1.Location = new System.Drawing.Point(134, 214);
+            this.progressBarControl1.Location = new System.Drawing.Point(134, 294);
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Size = new System.Drawing.Size(588, 30);
             this.progressBarControl1.TabIndex = 1;
@@ -133,33 +144,29 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(12, 157);
+            this.labelControl4.Location = new System.Drawing.Point(12, 241);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(116, 16);
             this.labelControl4.TabIndex = 3;
             this.labelControl4.Text = "Формат чертежа";
             // 
-            // lookUpEdit1
+            // lookUpEditDocumentType
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(134, 154);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lookUpEdit1.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEditDocumentType.Location = new System.Drawing.Point(134, 154);
+            this.lookUpEditDocumentType.Name = "lookUpEditDocumentType";
+            this.lookUpEditDocumentType.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lookUpEditDocumentType.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditDocumentType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(124, 22);
-            this.lookUpEdit1.TabIndex = 7;
-            // 
-            // lookUpEditFileExtention
-            // 
-            this.lookUpEditFileExtention.Location = new System.Drawing.Point(134, 182);
-            this.lookUpEditFileExtention.Name = "lookUpEditFileExtention";
-            this.lookUpEditFileExtention.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lookUpEditFileExtention.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditFileExtention.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditFileExtention.Size = new System.Drawing.Size(124, 22);
-            this.lookUpEditFileExtention.TabIndex = 7;
+            this.lookUpEditDocumentType.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lookUpEditDocumentType.Properties.DisplayMember = "Name";
+            this.lookUpEditDocumentType.Properties.ShowFooter = false;
+            this.lookUpEditDocumentType.Properties.ShowHeader = false;
+            this.lookUpEditDocumentType.Properties.ValueMember = "Id";
+            this.lookUpEditDocumentType.Size = new System.Drawing.Size(124, 22);
+            this.lookUpEditDocumentType.TabIndex = 7;
             // 
             // labelControl5
             // 
@@ -167,11 +174,11 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(12, 187);
+            this.labelControl5.Location = new System.Drawing.Point(12, 157);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(69, 16);
+            this.labelControl5.Size = new System.Drawing.Size(100, 16);
             this.labelControl5.TabIndex = 3;
-            this.labelControl5.Text = "Тип файла";
+            this.labelControl5.Text = "Тип документа";
             // 
             // labelControl6
             // 
@@ -223,28 +230,123 @@
             // 
             this.buttonUploadFile.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonUploadFile.Appearance.Options.UseFont = true;
-            this.buttonUploadFile.Location = new System.Drawing.Point(12, 214);
+            this.buttonUploadFile.Location = new System.Drawing.Point(-4, 294);
             this.buttonUploadFile.Name = "buttonUploadFile";
             this.buttonUploadFile.Size = new System.Drawing.Size(116, 30);
             this.buttonUploadFile.TabIndex = 9;
             this.buttonUploadFile.Text = "Загрузить";
             this.buttonUploadFile.Click += new System.EventHandler(this.buttonUploadFile_Click_1);
             // 
+            // textEditFileExtension
+            // 
+            this.textEditFileExtension.Location = new System.Drawing.Point(134, 238);
+            this.textEditFileExtension.Name = "textEditFileExtension";
+            this.textEditFileExtension.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEditFileExtension.Properties.Appearance.Options.UseFont = true;
+            this.textEditFileExtension.Properties.ReadOnly = true;
+            this.textEditFileExtension.Size = new System.Drawing.Size(124, 22);
+            this.textEditFileExtension.TabIndex = 10;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.Location = new System.Drawing.Point(12, 269);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(49, 16);
+            this.labelControl8.TabIndex = 3;
+            this.labelControl8.Text = "Размер";
+            // 
+            // textEditFileSize
+            // 
+            this.textEditFileSize.Location = new System.Drawing.Point(134, 266);
+            this.textEditFileSize.Name = "textEditFileSize";
+            this.textEditFileSize.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textEditFileSize.Properties.Appearance.Options.UseFont = true;
+            this.textEditFileSize.Properties.ReadOnly = true;
+            this.textEditFileSize.Size = new System.Drawing.Size(124, 22);
+            this.textEditFileSize.TabIndex = 10;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Appearance.Options.UseForeColor = true;
+            this.labelControl9.Location = new System.Drawing.Point(12, 213);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(113, 16);
+            this.labelControl9.TabIndex = 3;
+            this.labelControl9.Text = "Действитетен до";
+            // 
+            // dateEditExpireDate
+            // 
+            this.dateEditExpireDate.EditValue = null;
+            this.dateEditExpireDate.Location = new System.Drawing.Point(134, 210);
+            this.dateEditExpireDate.Name = "dateEditExpireDate";
+            this.dateEditExpireDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateEditExpireDate.Properties.Appearance.Options.UseFont = true;
+            this.dateEditExpireDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditExpireDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditExpireDate.Size = new System.Drawing.Size(124, 22);
+            this.dateEditExpireDate.TabIndex = 11;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Appearance.Options.UseForeColor = true;
+            this.labelControl10.Location = new System.Drawing.Point(12, 184);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(86, 16);
+            this.labelControl10.TabIndex = 3;
+            this.labelControl10.Text = "Тип чертежа";
+            // 
+            // lookUpEditDraftTypes
+            // 
+            this.lookUpEditDraftTypes.Location = new System.Drawing.Point(134, 182);
+            this.lookUpEditDraftTypes.Name = "lookUpEditDraftTypes";
+            this.lookUpEditDraftTypes.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lookUpEditDraftTypes.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditDraftTypes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditDraftTypes.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lookUpEditDraftTypes.Properties.DisplayMember = "Name";
+            this.lookUpEditDraftTypes.Properties.NullText = "";
+            this.lookUpEditDraftTypes.Properties.ShowFooter = false;
+            this.lookUpEditDraftTypes.Properties.ShowHeader = false;
+            this.lookUpEditDraftTypes.Properties.ValueMember = "Id";
+            this.lookUpEditDraftTypes.Size = new System.Drawing.Size(124, 22);
+            this.lookUpEditDraftTypes.TabIndex = 12;
+            // 
             // FileLoadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 256);
+            this.ClientSize = new System.Drawing.Size(734, 336);
+            this.Controls.Add(this.lookUpEditDraftTypes);
+            this.Controls.Add(this.dateEditExpireDate);
+            this.Controls.Add(this.textEditFileSize);
+            this.Controls.Add(this.textEditFileExtension);
             this.Controls.Add(this.buttonUploadFile);
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
-            this.Controls.Add(this.lookUpEditFileExtention);
-            this.Controls.Add(this.lookUpEdit1);
+            this.Controls.Add(this.lookUpEditDocumentType);
             this.Controls.Add(this.memoEditFileDescription);
             this.Controls.Add(this.textEditFileName);
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.labelControl6);
+            this.Controls.Add(this.labelControl9);
+            this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.labelControl5);
+            this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
@@ -258,14 +360,19 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Загрузка нового документа";
+            this.Load += new System.EventHandler(this.FileLoadForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditFilePath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditFileName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditFileDescription.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditFileExtention.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDocumentType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFileExtension.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFileSize.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpireDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpireDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDraftTypes.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,13 +387,19 @@
         private DevExpress.XtraEditors.MemoEdit memoEditFileDescription;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditFileExtention;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditDocumentType;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton buttonUploadFile;
+        private DevExpress.XtraEditors.TextEdit textEditFileExtension;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit textEditFileSize;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.DateEdit dateEditExpireDate;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditDraftTypes;
     }
 }

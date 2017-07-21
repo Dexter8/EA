@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditEndDevDate = new DevExpress.XtraEditors.DateEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -50,10 +50,8 @@
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditStartDevDate = new DevExpress.XtraEditors.DateEdit();
-            this.lookUpEditDraftTypes = new DevExpress.XtraEditors.LookUpEdit();
             this.memoEditDescription = new DevExpress.XtraEditors.MemoEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEditCode = new DevExpress.XtraEditors.TextEdit();
@@ -102,7 +100,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDevDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDevDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDraftTypes.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCode.Properties)).BeginInit();
@@ -129,7 +126,7 @@
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(8, 203);
+            this.labelControl6.Location = new System.Drawing.Point(8, 175);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(122, 16);
             this.labelControl6.TabIndex = 11;
@@ -138,7 +135,7 @@
             // dateEditEndDevDate
             // 
             this.dateEditEndDevDate.EditValue = new System.DateTime(2017, 7, 14, 0, 0, 0, 0);
-            this.dateEditEndDevDate.Location = new System.Drawing.Point(145, 200);
+            this.dateEditEndDevDate.Location = new System.Drawing.Point(145, 172);
             this.dateEditEndDevDate.MenuManager = this.barManager1;
             this.dateEditEndDevDate.Name = "dateEditEndDevDate";
             this.dateEditEndDevDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -213,18 +210,18 @@
             // 
             this.barStaticItemCreateUserLogin.Id = 4;
             this.barStaticItemCreateUserLogin.Name = "barStaticItemCreateUserLogin";
-            toolTipItem1.Text = "Кто создал";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barStaticItemCreateUserLogin.SuperTip = superToolTip1;
+            toolTipItem3.Text = "Кто создал";
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barStaticItemCreateUserLogin.SuperTip = superToolTip3;
             this.barStaticItemCreateUserLogin.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemCreateDate
             // 
             this.barStaticItemCreateDate.Id = 6;
             this.barStaticItemCreateDate.Name = "barStaticItemCreateDate";
-            toolTipItem2.Text = "Дата создания";
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barStaticItemCreateDate.SuperTip = superToolTip2;
+            toolTipItem4.Text = "Дата создания";
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barStaticItemCreateDate.SuperTip = superToolTip4;
             this.barStaticItemCreateDate.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
@@ -239,7 +236,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 506);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 478);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(934, 25);
             // 
@@ -249,7 +246,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 475);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 447);
             // 
             // barDockControlRight
             // 
@@ -257,7 +254,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(934, 31);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 475);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 447);
             // 
             // barButtonItem1
             // 
@@ -276,7 +273,7 @@
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(8, 175);
+            this.labelControl5.Location = new System.Drawing.Point(8, 147);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(131, 16);
             this.labelControl5.TabIndex = 9;
@@ -285,7 +282,7 @@
             // dateEditStartDevDate
             // 
             this.dateEditStartDevDate.EditValue = new System.DateTime(2017, 7, 14, 0, 0, 0, 0);
-            this.dateEditStartDevDate.Location = new System.Drawing.Point(145, 172);
+            this.dateEditStartDevDate.Location = new System.Drawing.Point(145, 144);
             this.dateEditStartDevDate.MenuManager = this.barManager1;
             this.dateEditStartDevDate.Name = "dateEditStartDevDate";
             this.dateEditStartDevDate.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -297,32 +294,12 @@
             this.dateEditStartDevDate.Size = new System.Drawing.Size(110, 22);
             this.dateEditStartDevDate.TabIndex = 0;
             // 
-            // lookUpEditDraftTypes
-            // 
-            this.lookUpEditDraftTypes.Location = new System.Drawing.Point(145, 144);
-            this.lookUpEditDraftTypes.MenuManager = this.barManager1;
-            this.lookUpEditDraftTypes.Name = "lookUpEditDraftTypes";
-            this.lookUpEditDraftTypes.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lookUpEditDraftTypes.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditDraftTypes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditDraftTypes.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.lookUpEditDraftTypes.Properties.DisplayMember = "Name";
-            this.lookUpEditDraftTypes.Properties.NullText = "";
-            this.lookUpEditDraftTypes.Properties.ShowFooter = false;
-            this.lookUpEditDraftTypes.Properties.ShowHeader = false;
-            this.lookUpEditDraftTypes.Properties.ValueMember = "Id";
-            this.lookUpEditDraftTypes.Size = new System.Drawing.Size(110, 22);
-            this.lookUpEditDraftTypes.TabIndex = 8;
-            // 
             // memoEditDescription
             // 
             this.memoEditDescription.Location = new System.Drawing.Point(145, 79);
             this.memoEditDescription.MenuManager = this.barManager1;
             this.memoEditDescription.Name = "memoEditDescription";
-            this.memoEditDescription.Size = new System.Drawing.Size(771, 59);
+            this.memoEditDescription.Size = new System.Drawing.Size(776, 59);
             this.memoEditDescription.TabIndex = 7;
             // 
             // textEditName
@@ -332,20 +309,8 @@
             this.textEditName.Name = "textEditName";
             this.textEditName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textEditName.Properties.Appearance.Options.UseFont = true;
-            this.textEditName.Size = new System.Drawing.Size(771, 22);
+            this.textEditName.Size = new System.Drawing.Size(776, 22);
             this.textEditName.TabIndex = 5;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(8, 147);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(86, 16);
-            this.labelControl4.TabIndex = 4;
-            this.labelControl4.Text = "Тип чертежа";
             // 
             // labelControl3
             // 
@@ -378,7 +343,7 @@
             this.textEditCode.Name = "textEditCode";
             this.textEditCode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textEditCode.Properties.Appearance.Options.UseFont = true;
-            this.textEditCode.Size = new System.Drawing.Size(771, 22);
+            this.textEditCode.Size = new System.Drawing.Size(776, 22);
             this.textEditCode.TabIndex = 1;
             // 
             // labelControl1
@@ -589,7 +554,7 @@
             this.groupControl1.Controls.Add(this.sButtonOpenPdf);
             this.groupControl1.Controls.Add(this.sButtonAddNewFile);
             this.groupControl1.Controls.Add(this.sButtonOpenFromAcrobatReader);
-            this.groupControl1.Location = new System.Drawing.Point(0, 235);
+            this.groupControl1.Location = new System.Drawing.Point(0, 207);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(928, 207);
             this.groupControl1.TabIndex = 12;
@@ -605,13 +570,11 @@
             this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.dateEditStartDevDate);
             this.groupControl2.Controls.Add(this.labelControl3);
-            this.groupControl2.Controls.Add(this.lookUpEditDraftTypes);
-            this.groupControl2.Controls.Add(this.labelControl4);
             this.groupControl2.Controls.Add(this.memoEditDescription);
             this.groupControl2.Controls.Add(this.textEditName);
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(928, 229);
+            this.groupControl2.Size = new System.Drawing.Size(928, 201);
             this.groupControl2.TabIndex = 13;
             this.groupControl2.Text = "Данные";
             // 
@@ -621,7 +584,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 31);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(934, 475);
+            this.xtraTabControl1.Size = new System.Drawing.Size(934, 447);
             this.xtraTabControl1.TabIndex = 18;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -633,14 +596,14 @@
             this.xtraTabPage1.Controls.Add(this.groupControl2);
             this.xtraTabPage1.Controls.Add(this.groupControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(928, 447);
+            this.xtraTabPage1.Size = new System.Drawing.Size(928, 419);
             this.xtraTabPage1.Text = "Свойства";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.groupControl3);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(928, 491);
+            this.xtraTabPage2.Size = new System.Drawing.Size(928, 447);
             this.xtraTabPage2.Text = "Связи";
             // 
             // groupControl3
@@ -652,7 +615,7 @@
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.ShowCaption = false;
-            this.groupControl3.Size = new System.Drawing.Size(928, 491);
+            this.groupControl3.Size = new System.Drawing.Size(928, 447);
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "groupControl3";
             // 
@@ -790,7 +753,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.groupControl4);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(928, 491);
+            this.xtraTabPage3.Size = new System.Drawing.Size(928, 447);
             this.xtraTabPage3.Text = "История";
             // 
             // groupControl4
@@ -799,7 +762,7 @@
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(928, 491);
+            this.groupControl4.Size = new System.Drawing.Size(928, 447);
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "groupControl4";
             // 
@@ -807,7 +770,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 531);
+            this.ClientSize = new System.Drawing.Size(934, 503);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -828,7 +791,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDevDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDevDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDraftTypes.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEditDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCode.Properties)).EndInit();
@@ -862,10 +824,8 @@
         private DevExpress.XtraEditors.DateEdit dateEditEndDevDate;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.DateEdit dateEditStartDevDate;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditDraftTypes;
         private DevExpress.XtraEditors.MemoEdit memoEditDescription;
         private DevExpress.XtraEditors.TextEdit textEditName;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit textEditCode;
