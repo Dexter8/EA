@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EA.Data;
 using EA.Data.Enums;
@@ -32,9 +33,8 @@ namespace EA.Form
             if (_mode == CardEditModeEnum.Edit && _cardId != 0)
             {
                 _card = new CardModel().GetCardData(_cardId);
-                _files = new FileModel().GetCardFiles(_cardId);
                 FillEditors();
-                gridControlFiles.DataSource = _files;
+                RefreshFiles();
             }
 
             //Новая карточка
@@ -45,6 +45,14 @@ namespace EA.Form
 
             }
         }
+
+        private void RefreshFiles()
+        {
+            _files = new FileModel().GetCardFiles(_cardId);
+            gridControlFiles.DataSource = _files;
+        }
+
+
         
 
         private void FillEditors()
@@ -68,15 +76,14 @@ namespace EA.Form
             card.Description = memoEditDescription.EditValue as string;
             card.Code = textEditCode.EditValue as string;
             card.Name = textEditName.EditValue as string;
-            card.DraftTypeId = lookUpEditDraftTypes.EditValue as int?;
+            //card.DraftTypeId = lookUpEditDraftTypes.EditValue as int?;
             card.StartDevelopDate = dateEditStartDevDate.EditValue as DateTime?;
             card.EndDevelopDate = dateEditEndDevDate.EditValue as DateTime?;
+
             card.CardId = _cardId;
             return card;
         }
         #endregion
-
-
 
 
         /// <summary>
@@ -139,10 +146,7 @@ namespace EA.Form
             Close();
         }
 
-
-
-
-
+        
         private void sButtonOpenPdf_Click(object sender, EventArgs e)
         {
             //ошибка если нет файлов
@@ -153,9 +157,59 @@ namespace EA.Form
         private void sButtonLoadFile_Click(object sender, EventArgs e)
         {
             SaveCard();
-            new FileLoadForm(_cardId).ShowDialog();
+            new FileLoadForm(_cardId, null, FileMode.New).ShowDialog();
+            RefreshFiles();
         }
 
-       
+
+        private void buttonDeleteFile_Click(object sender, EventArgs e)
+        #region
+        {
+            if (_files == null)
+            {
+                XtraMessageBox.Show("Отсуствуют документы для удаления!");
+                return;
+            }
+
+            string fileName = gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Name") as string;
+            string message = "Удалить документ " + fileName;
+            string caption = "Удаление документа";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = XtraMessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
+                new FileModel().DeleteFile(fileId);
+                RefreshFiles();
+            }
+        }
+        #endregion
+
+
+        private void buttonEditFile_Click(object sender, EventArgs e)
+        {
+            new FileEditForm().ShowDialog();
+        }
+
+        private void buttonUpdateFileVersion_Click(object sender, EventArgs e)
+        {
+            if (_cardId == 0) SaveCard();
+
+            int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
+            new FileLoadForm(_cardId, fileId, FileMode.UpdateVersion).ShowDialog();
+            RefreshFiles();
+        }
+
+        private void gridViewFiles_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            //Если у док-та только одна версия, то делаем кнопку недоступной
+            int? version = gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Version") as int?;
+            if (version > 1) buttonShowPrevFileVersion.Enabled = true;
+            else buttonShowPrevFileVersion.Enabled = false;
+
+        }
     }
 }

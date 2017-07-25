@@ -54,7 +54,7 @@ namespace EA.Model
                               ,fc.[parent_id]
                               ,fc.[card_id]
                               ,fc.[folder_id]
-                              ,fc.[file_type_id]
+                              ,fc.[document_type_id]
                               ,fc.[name]
                               ,fc.[description]
                               ,fc.[extention]
@@ -65,9 +65,11 @@ namespace EA.Model
                               ,fc.[upload_date]
                               ,fc.[upload_reason]
 	                          ,ctl.name as 'type_name'
+                                ,fc.expire_date
                           FROM [EA2015].[dbo].[FileContent] fc
-                          LEFT JOIN [EA2015].[dbo].[CardTypeList] ctl on ctl.id = fc.file_type_id
-                          WHERE fc.card_id = {cardId}";
+                          LEFT JOIN [EA2015].[dbo].[CardTypeList] ctl on ctl.id = fc.document_type_id
+                          WHERE fc.card_id = {cardId}
+                          AND NOT EXISTS (SELECT fc1.id FROM [EA2015].[dbo].[FileContent] fc1 WHERE fc1.parent_id = fc.id)";
             try
             {
                 table = new SqlHealper().ExecuteTable(query, new SqlConnectionString().GetWinAuthConnectionString());
@@ -80,10 +82,14 @@ namespace EA.Model
                         Description = row["description"] as string,
                         ExtensionName = row["extention"] as string,
                         Size = row["size"] as string,
-                        TypeId = row["file_type_id"] as int?,
+                        FileTypeId = row["document_type_id"] as int?,
                         TypeName = row["type_name"] as string,
-                        Name = row["name"] as string
-                        
+                        Name = row["name"] as string,
+                        UploadDate = row["upload_date"] as DateTime?,
+                        ExpireDate = row["expire_date"] as DateTime?,
+                        Version = row["version"] as int?
+
+
                     });
                 }
                 return files;
@@ -138,80 +144,103 @@ namespace EA.Model
         /// </summary>
         /// <param name="fdata"></param>
         /// <returns></returns>
-        public bool UploadFileToSql(FileData fdata )
+        public int UploadFileToSql(FileData fdata )
         #region
         {
             //проверка на название
             //проверка по хешу/ сохранять хеш
-
-
-            byte[] file;
-            string query =
-                @"INSERT INTO [EA2015].[dbo].[FileContent] ([uid], [card_id], [content], [name], [description], [extention], [size], [owner]) 
-                    VALUES (@uid, @card_id, @content, @name, @description, @extention, @size, @owner)";
+           
             try
             {
-                /*using (var stream = new FileStream(fdata.Path, FileMode.Open, FileAccess.Read))
+
+                using (var conn = new SqlConnection(new SqlConnectionString().GetWinAuthConnectionString()))
                 {
-                    using (var reader = new BinaryReader(stream))
-                    {
-                        file = reader.ReadBytes((int)stream.Length);
-                        
-                    }
-                }*/
+                    conn.Open();
+                    var cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "dbo.SP_UploadFile";
 
-                using (SqlConnection connection = new SqlConnection(new SqlConnectionString().GetWinAuthConnectionString()))
-                {
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        var iIdParam = new SqlParameter("@uid", SqlDbType.UniqueIdentifier);
-                        iIdParam.Value = fdata.UId;
-                        command.Parameters.Add(iIdParam);
+                    cmd.Parameters.AddWithValue("@card_id", fdata.CardId ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@content", fdata.Content ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@name", fdata.Name ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@description", fdata.Description ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@extention", fdata.ExtensionName ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@size", fdata.Content.Length.ToString() ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@owner", Environment.UserName ?? (object) DBNull.Value);
+                    cmd.Parameters.AddWithValue("@version", fdata.Version ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@parent_id", fdata.ParentId ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@expire_date", fdata.ExpireDate ?? (object)DBNull.Value);
 
-                        var cardIdParam = new SqlParameter("@card_id", SqlDbType.Int);
-                        cardIdParam.Value = fdata.CardId;
-                        command.Parameters.Add(cardIdParam);
+                    cmd.Parameters.AddWithValue("@draft_type_id", fdata.DraftTypeId ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@status_id", fdata.StatusId ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@file_type_id", fdata.FileTypeId ?? (object)DBNull.Value);
 
-                        var contentParam = new SqlParameter("@content", SqlDbType.VarBinary);
-                        contentParam.Value = fdata.Content;
-                        command.Parameters.Add(contentParam);
 
-                        var nameParam = new SqlParameter("@name", SqlDbType.NVarChar);
-                        nameParam.Value = fdata.Name;
-                        command.Parameters.Add(nameParam);
+                    cmd.Parameters.Add("@new_id", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.ExecuteNonQuery();
 
-                        var descriptionParam = new SqlParameter("@description", SqlDbType.NVarChar);
-                        descriptionParam.Value = fdata.Description;
-                        command.Parameters.Add(descriptionParam);
-
-                        var extentionParam = new SqlParameter("@extention", SqlDbType.NVarChar);
-                        extentionParam.Value = fdata.ExtensionName;
-                        command.Parameters.Add(extentionParam);
-
-                        var sizeParam = new SqlParameter("@size", SqlDbType.NVarChar);
-                        sizeParam.Value = fdata.Content.Length.ToString();
-                        command.Parameters.Add(sizeParam);
-
-                        var ownerParam = new SqlParameter("@owner", SqlDbType.NVarChar);
-                        ownerParam.Value = fdata.Owner;
-                        command.Parameters.Add(ownerParam);
-
-                        connection.Open();
-                        command.ExecuteScalar();
-                        return true;
-                    }
+                    return Convert.ToInt32(cmd.Parameters["@new_id"].Value);
                 }
 
-
-                return true;
             }
             catch (Exception ex)
             {
                 new ErrorSqlModel().WriteErrorOnSql(ex);
-                return false;
+                return 0;
             }
         }
         #endregion
+
+
+        /// <summary>
+        /// Получить данный о загруженном файле
+        /// </summary>
+        /// <param name="fileId"></param>
+        /// <returns></returns>
+        public FileData GetFileData(int fileId)
+        #region
+        {
+            FileData fileData = new FileData();
+            try
+            {
+                string query =
+                    $@"SELECT [id],[parent_id], [card_id]
+                                  ,[file_type_id], draft_type_id, status_id, [name], [description], [extention], [size]
+                                  ,[owner], [version], [upload_date], [upload_reason], [expire_date], [version]
+                                    FROM [EA2015].[dbo].[FileContent] WHERE id = {fileId}";
+
+                DataTable table = new SqlHealper().ExecuteTable(query,
+                    new SqlConnectionString().GetWinAuthConnectionString());
+                if (table.Rows.Count == 0) return null;
+                foreach (DataRow row in table.Rows)
+                {
+                    fileData.CardId = Convert.ToInt32(row["card_id"]);
+                    fileData.FileTypeId = row["file_type_id"] as int?;
+                    fileData.Name = row["name"] as string;
+                    fileData.Description = row["description"] as string;
+                    fileData.ExtensionName = row["extention"] as string;
+                    fileData.Size = row["size"] as string;
+                    fileData.Owner = row["owner"] as string;
+                    fileData.Version = row["version"] as int?;
+                    fileData.UploadDate = row["upload_date"] as DateTime?;
+                    fileData.UpdateReason = row["upload_reason"] as string;
+                    fileData.ExpireDate = row["expire_date"] as DateTime?;
+                    fileData.Version = row["version"] as int?;
+                    fileData.DraftTypeId = row["draft_type_id"] as int?;
+                    fileData.StatusId = row["status_id"] as int?;
+                }
+                return fileData;
+
+            }
+            catch (Exception ex)
+            {
+                new ErrorSqlModel().WriteErrorOnSql(ex);
+                return null;
+            }
+        }
+        #endregion
+
 
 
 
@@ -245,6 +274,25 @@ namespace EA.Model
             }
         } 
         #endregion
+
+
+        public bool DeleteFile(int fileId)
+        #region
+        {
+            try
+            {
+                string query = $@"DELETE FROM [EA2015].[dbo].[FileContent] WHERE [id] = {fileId}";
+                new SqlHealper().ExecuteNonQuery(query, new SqlConnectionString().GetWinAuthConnectionString());
+                return true;
+            }
+            catch (Exception ex)
+            {
+                new ErrorSqlModel().WriteErrorOnSql(ex);
+                return false;
+            }
+        }
+        #endregion
+
 
 
         public void SaveZipFile(Stream file)

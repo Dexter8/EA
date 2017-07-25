@@ -10,17 +10,37 @@ namespace EA.Form
     public partial class FileLoadForm : XtraForm
     {
         private readonly int _cardId;
+        private readonly int? _fileId;
+        private readonly Data.Enums.FileMode _mode;
+        private int? _version;
 
-        public FileLoadForm(int cardId)
+        public FileLoadForm(int cardId, int? fileId, Data.Enums.FileMode mode)
         {
             _cardId = cardId;
+            _fileId = fileId;
+            _mode = mode;
             InitializeComponent();
         }
 
         private void FileLoadForm_Load(object sender, EventArgs e)
         {
-            lookUpEditDocumentType.Properties.DataSource = new FileModel().GetFileTypes();
+            lookUpEditFileType.Properties.DataSource = new FileModel().GetFileTypes();
             lookUpEditDraftTypes.Properties.DataSource = new DrawingModel().GetDraftTypes();
+            lookUpEditStatus.Properties.DataSource = new FileModel().GetStatusList();
+
+            if (_mode == Data.Enums.FileMode.New)
+            {
+                this.Text = @"Загрузка нового документа";
+            }
+            else if (_mode == Data.Enums.FileMode.UpdateVersion)
+            {
+                this.Text = @"Обновление документа";
+                if (_fileId == null) return;
+
+                FileData data = new FileModel().GetFileData(_fileId.Value);
+                if (data.Version == null) _version = 2;
+                else _version = data.Version + 1;
+            }
         }
 
         private void buttonEditFilePath_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -39,6 +59,7 @@ namespace EA.Form
                     buttonEditFilePath.Text = dlg.FileName;
                     textEditFileExtension.Text = Path.GetExtension(dlg.FileName);
                     textEditFileSize.Text = (new FileInfo(dlg.FileName).Length / 1024) + @" Кб";
+                    textEditFileName.Text = Path.GetFileNameWithoutExtension(dlg.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -86,19 +107,40 @@ namespace EA.Form
             fileData.UId = Guid.NewGuid();
             fileData.Name = textEditFileName.Text;
             fileData.Description = memoEditFileDescription.Text;
-            fileData.ExtensionId = lookUpEditDocumentType.EditValue as int?;
-            fileData.FileType = lookUpEditDocumentType.EditValue as int?;
+            fileData.StatusId = lookUpEditStatus.EditValue as int?;
             fileData.Content = ReadFile(buttonEditFilePath.Text);
             fileData.Size = new FileInfo(buttonEditFilePath.Text).Length.ToString();
             fileData.ExtensionName = textEditFileExtension.Text;
             fileData.CardId = _cardId;
             fileData.Owner = Environment.UserName;
             fileData.ExpireDate = dateEditExpireDate.EditValue as DateTime?;
+            fileData.FileTypeId = lookUpEditFileType.EditValue as int?;
             fileData.DraftTypeId = lookUpEditDraftTypes.EditValue as int?;
-            if (_cardId == 0) return;
-            new FileModel().UploadFileToSql(fileData);
+            fileData.ParentId = _fileId;
+
+            if (_mode == Data.Enums.FileMode.New) fileData.Version = 1;
+            else fileData.Version = _version;
+
+            RefreshEditros(new FileModel().GetFileData(new FileModel().UploadFileToSql(fileData)));
         }
 
+
+
+        private void RefreshEditros(FileData data)
+        {
+            textEditFileName.Text = data.Name;
+            memoEditFileDescription.Text = data.Description;
+            lookUpEditFileType.EditValue = data.FileTypeId;
+            textEditFileExtension.Text = data.ExtensionName;
+            dateEditExpireDate.EditValue = data.ExpireDate;
+            lookUpEditDraftTypes.EditValue = data.DraftTypeId;
+            textEditVersion.EditValue = data.Version;
+            textEditUploadUserLogin.Text = data.Owner;
+            textEditUploadDate.Text = data.UploadDate + "";
+            
+
+
+        }
         
     }
 }

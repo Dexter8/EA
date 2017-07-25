@@ -138,5 +138,10 @@ namespace EA.Form
             if (node == null) return;
             //popupMenu1.ShowPopup(Cursor.Position);
         }
+
+        private void barButtonDeleteCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

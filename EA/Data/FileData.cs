@@ -13,7 +13,8 @@ namespace EA.Data
         public int? ParentId { get; set; }
         public int? DraftTypeId { get; set; }
         public string Path { get; set; }
-        public int? TypeId { get; set; }
+        public int? FileTypeId { get; set; }
+        public int? StatusId { get; set; }
         public string TypeName { get; set; }
         public int? CardId { get; set; }
 
@@ -47,7 +48,6 @@ namespace EA.Data
         public int? Version { get; set; }
         public DateTime? LastEditDate { get; set; }
         public string Owner { get; set; }
-        public int? FileType { get; set; }
 
     }
 }

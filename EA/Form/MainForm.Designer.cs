@@ -145,6 +145,7 @@
             this.barButtonDeleteCard.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonDeleteCard.ImageOptions.Image")));
             this.barButtonDeleteCard.ImageOptions.LargeImage = global::EA.Properties.Resources.order_delete;
             this.barButtonDeleteCard.Name = "barButtonDeleteCard";
+            this.barButtonDeleteCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonDeleteCard_ItemClick);
             // 
             // barButtonCreateNewFolder
             // 
@@ -380,8 +381,6 @@
             this.colTypeName.OptionsColumn.AllowEdit = false;
             this.colTypeName.OptionsColumn.AllowFocus = false;
             this.colTypeName.OptionsColumn.ReadOnly = true;
-            this.colTypeName.Visible = true;
-            this.colTypeName.VisibleIndex = 0;
             // 
             // colCode
             // 
@@ -392,7 +391,7 @@
             this.colCode.OptionsColumn.AllowFocus = false;
             this.colCode.OptionsColumn.ReadOnly = true;
             this.colCode.Visible = true;
-            this.colCode.VisibleIndex = 1;
+            this.colCode.VisibleIndex = 0;
             // 
             // colName
             // 
@@ -403,7 +402,7 @@
             this.colName.OptionsColumn.AllowFocus = false;
             this.colName.OptionsColumn.ReadOnly = true;
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 2;
+            this.colName.VisibleIndex = 1;
             // 
             // colCreateDate
             // 
@@ -415,7 +414,7 @@
             this.colCreateDate.OptionsColumn.AllowFocus = false;
             this.colCreateDate.OptionsColumn.ReadOnly = true;
             this.colCreateDate.Visible = true;
-            this.colCreateDate.VisibleIndex = 3;
+            this.colCreateDate.VisibleIndex = 2;
             // 
             // colExistScan
             // 
@@ -427,7 +426,7 @@
             this.colExistScan.OptionsColumn.AllowFocus = false;
             this.colExistScan.OptionsColumn.ReadOnly = true;
             this.colExistScan.Visible = true;
-            this.colExistScan.VisibleIndex = 4;
+            this.colExistScan.VisibleIndex = 3;
             this.colExistScan.Width = 25;
             // 
             // colExist3D
@@ -440,7 +439,7 @@
             this.colExist3D.OptionsColumn.AllowFocus = false;
             this.colExist3D.OptionsColumn.ReadOnly = true;
             this.colExist3D.Visible = true;
-            this.colExist3D.VisibleIndex = 5;
+            this.colExist3D.VisibleIndex = 4;
             this.colExist3D.Width = 25;
             // 
             // colExist2D
@@ -453,7 +452,7 @@
             this.colExist2D.OptionsColumn.AllowFocus = false;
             this.colExist2D.OptionsColumn.ReadOnly = true;
             this.colExist2D.Visible = true;
-            this.colExist2D.VisibleIndex = 6;
+            this.colExist2D.VisibleIndex = 5;
             this.colExist2D.Width = 20;
             // 
             // popupMenu1
