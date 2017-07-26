@@ -99,6 +99,9 @@ namespace EA.Form
         private void gridViewCards_DoubleClick(object sender, EventArgs e)
         { try
             {
+                
+
+
                 int cardId = Convert.ToInt32(gridViewCards.GetRowCellValue(gridViewCards.FocusedRowHandle, "CardId").ToString());
                 new EditForm(CardEditModeEnum.Edit, cardId, null).ShowDialog();
                 RefreshCards(Convert.ToInt32(treeListFolders.FocusedNode.GetDisplayText(tcolId)));

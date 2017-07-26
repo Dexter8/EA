@@ -69,9 +69,9 @@
     <Compile Include="Data\Enums\FileMode.cs" />
     <Compile Include="Data\FileType.cs" />
     <Compile Include="Data\DraftType.cs" />
-    <Compile Include="Data\DrawingViewLog.cs" />
     <Compile Include="Data\Enums\CardEditModeEnum.cs" />
     <Compile Include="Data\FileData.cs" />
+    <Compile Include="Data\FileViewLog.cs" />
     <Compile Include="Data\Folder.cs" />
     <Compile Include="Data\StaticData\UserStaticData.cs" />
     <Compile Include="Data\Status.cs" />
@@ -92,6 +92,12 @@
     </Compile>
     <Compile Include="Form\FileForm\FileLoadForm.designer.cs">
       <DependentUpon>FileLoadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FileForm\FileViewLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FileForm\FileViewLogForm.Designer.cs">
+      <DependentUpon>FileViewLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\FolderEditForm.cs">
       <SubType>Form</SubType>
@@ -122,6 +128,7 @@
     <Compile Include="Models\SqlModels\ErrorSqlModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\FolderModel.cs" />
+    <Compile Include="Models\SqlModels\FileViewSqlModel.cs" />
     <Compile Include="Models\SqlModels\RegisterUserSqlModel.cs" />
     <Compile Include="Models\SqlModels\UserSqlModel.cs" />
     <Compile Include="Program.cs" />
@@ -134,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FileForm\FileLoadForm.resx">
       <DependentUpon>FileLoadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FileForm\FileViewLogForm.resx">
+      <DependentUpon>FileViewLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FolderEditForm.resx">
       <DependentUpon>FolderEditForm.cs</DependentUpon>

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using DevExpress.XtraEditors;
 using EA.Data;
 using Sqllib.AdoNetSqlService;
@@ -23,23 +21,23 @@ namespace EA.Model
             {
                 cards.Clear();
                 string query = @"SELECT [id]
-      ,[folder_id]
-      ,[card_type_id]
-      ,[code]
-      ,[name]
-      ,[description]
-      ,[create_user_id]
-      ,[create_date]
-      ,[last_edit_date]
-      ,[start_develop_date]
-      ,[end_develop_date]
-      ,[card_type_name]
-      ,[status_name]
-      ,[status_short_name]
-      ,[exist_scan]
-      ,[exist_2d]
-      ,[exist_3d]
-  FROM [EA2015].[dbo].[View_Cards] where folder_id = @folderIdParam order by code";
+                              ,[folder_id]
+                              ,[card_type_id]
+                              ,[code]
+                              ,[name]
+                              ,[description]
+                              ,[create_user_id]
+                              ,[create_date]
+                              ,[last_edit_date]
+                              ,[start_develop_date]
+                              ,[end_develop_date]
+                              ,[card_type_name]
+                              ,[status_name]
+                              ,[status_short_name]
+                              ,[exist_scan]
+                              ,[exist_2d]
+                              ,[exist_3d]
+                          FROM [EA2015].[dbo].[View_Cards] where folder_id = @folderIdParam order by code";
 
                 DataTable cardsTable = new DataTable();
 
@@ -174,15 +172,12 @@ namespace EA.Model
         #endregion
 
         public Card GetCardData(int cardId)
-
-            #region
-
+        #region
         {
             try
             {
                 string query =
-                    $@"
-                                SELECT [id]
+                    $@" SELECT [id]
                                   ,[folder_id]
                                   ,[card_type_id]
                                   ,[code]
@@ -195,8 +190,7 @@ namespace EA.Model
                                   ,[end_develop_date]
                                   ,[dep_temp]
                                 FROM [EA2015].[dbo].[Card]
-                                WHERE id = {
-                        cardId}";
+                                WHERE id = {cardId}";
 
                 DataTable cardTable = new DataTable();
                 Card cardData = new Card();
@@ -268,7 +262,6 @@ namespace EA.Model
 
                     return Convert.ToInt32(cmd.Parameters["@new_id"].Value);
                 }
-
             }
             catch (Exception ex)
             {
@@ -277,6 +270,7 @@ namespace EA.Model
             }
         }
         #endregion
+
 
 
         public bool UpdateCard(Card card)

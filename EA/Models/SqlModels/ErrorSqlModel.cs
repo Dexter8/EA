@@ -28,25 +28,12 @@ namespace EA.Model
                     var cmd = new SqlCommand();
                     cmd.Connection = connection;
                     cmd.CommandText =
-                        "INSERT INTO[EA2015].[dbo].[JUserError] (error_content, error_description, user_id) VALUES(@errorContent, @errorDescription, 1)";
+                        "INSERT INTO[EA2015].[dbo].[JUserError] (error_content, error_description, user_login, version) VALUES(@errorContent, @errorDescription, @user_login, @version)";
 
-                    var param = new SqlParameter();
-                    param.ParameterName = "@user_id";
-                    param.Value = 1;
-                    param.SqlDbType = SqlDbType.Int;
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter();
-                    param.ParameterName = "@errorContent";
-                    param.Value = exeption.Message;
-                    param.SqlDbType = SqlDbType.NVarChar;
-                    cmd.Parameters.Add(param);
-
-                    param = new SqlParameter();
-                    param.ParameterName = "@errorDescription";
-                    param.Value = exeption.ToString();
-                    param.SqlDbType = SqlDbType.NVarChar;
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@user_login", Environment.UserName ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@version", Environment.Version ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@errorDescription", exeption.ToString() ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@errorContent", exeption.Message ?? (object)DBNull.Value);
 
                     cmd.ExecuteNonQuery();
 

@@ -4,7 +4,9 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EA.Data;
 using EA.Data.Enums;
+using EA.Form.FileForm;
 using EA.Model;
+using EA.Models.SqlModels;
 
 namespace EA.Form
 {
@@ -149,8 +151,15 @@ namespace EA.Form
         
         private void sButtonOpenPdf_Click(object sender, EventArgs e)
         {
-            //ошибка если нет файлов
+            if (!IsFileEnable()) return;
+
             int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
+            //запись просмотра в журнал
+            if (_cardId != 0)
+            {
+                new FileViewSqlModel().SaveFileViewLog(_cardId, fileId);
+            }
+
             new PdfViewer(fileId).ShowDialog();
         }
 
@@ -165,11 +174,7 @@ namespace EA.Form
         private void buttonDeleteFile_Click(object sender, EventArgs e)
         #region
         {
-            if (_files == null)
-            {
-                XtraMessageBox.Show("Отсуствуют документы для удаления!");
-                return;
-            }
+            if (!IsFileEnable()) return;
 
             string fileName = gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Name") as string;
             string message = "Удалить документ " + fileName;
@@ -191,11 +196,27 @@ namespace EA.Form
 
         private void buttonEditFile_Click(object sender, EventArgs e)
         {
+            if (!IsFileEnable()) return;
             new FileEditForm().ShowDialog();
         }
 
+
+        private bool IsFileEnable(string message = "Отсуствует документ")
+        {
+            if (gridViewFiles.FocusedRowHandle < 0)
+            {
+                XtraMessageBox.Show("Нет");
+                return false;
+            }
+            return true;
+        }
+
+
+
+
         private void buttonUpdateFileVersion_Click(object sender, EventArgs e)
         {
+            if (!IsFileEnable()) return;
             if (_cardId == 0) SaveCard();
 
             int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
@@ -210,6 +231,22 @@ namespace EA.Form
             if (version > 1) buttonShowPrevFileVersion.Enabled = true;
             else buttonShowPrevFileVersion.Enabled = false;
 
+        }
+
+        private void sButtonOpenFromAcrobatReader_Click(object sender, EventArgs e)
+        {
+            if (!IsFileEnable()) return;
+        }
+
+        private void sButtonSaveOnComputer_Click(object sender, EventArgs e)
+        {
+            if (!IsFileEnable()) return;
+        }
+
+        private void sButtonLoadHistory_Click(object sender, EventArgs e)
+        {
+            if (!IsFileEnable()) return;
+            new FileViewLogForm(_cardId).ShowDialog();
         }
     }
 }

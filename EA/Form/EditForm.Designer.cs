@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditForm));
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditEndDevDate = new DevExpress.XtraEditors.DateEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonSave = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -97,6 +98,25 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.gridControlFileViewLog = new DevExpress.XtraGrid.GridControl();
+            this.gridViewFileViewLog = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colCardId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFileId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFileName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colUserLogin = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMachineName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControlUserDownloadLog = new DevExpress.XtraGrid.GridControl();
+            this.gridViewUserDownloadLog = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDevDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDevDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -123,6 +143,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
+            this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlFileViewLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewFileViewLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlUserDownloadLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewUserDownloadLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
+            this.groupControl6.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelControl6
@@ -213,18 +244,18 @@
             // 
             this.barStaticItemCreateUserLogin.Id = 4;
             this.barStaticItemCreateUserLogin.Name = "barStaticItemCreateUserLogin";
-            toolTipItem7.Text = "Кто создал";
-            superToolTip7.Items.Add(toolTipItem7);
-            this.barStaticItemCreateUserLogin.SuperTip = superToolTip7;
+            toolTipItem5.Text = "Кто создал";
+            superToolTip5.Items.Add(toolTipItem5);
+            this.barStaticItemCreateUserLogin.SuperTip = superToolTip5;
             this.barStaticItemCreateUserLogin.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemCreateDate
             // 
             this.barStaticItemCreateDate.Id = 6;
             this.barStaticItemCreateDate.Name = "barStaticItemCreateDate";
-            toolTipItem8.Text = "Дата создания";
-            superToolTip8.Items.Add(toolTipItem8);
-            this.barStaticItemCreateDate.SuperTip = superToolTip8;
+            toolTipItem6.Text = "Дата создания";
+            superToolTip6.Items.Add(toolTipItem6);
+            this.barStaticItemCreateDate.SuperTip = superToolTip6;
             this.barStaticItemCreateDate.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
@@ -501,7 +532,7 @@
             // 
             // sButtonOpenPdf
             // 
-            this.sButtonOpenPdf.Location = new System.Drawing.Point(124, 23);
+            this.sButtonOpenPdf.Location = new System.Drawing.Point(121, 23);
             this.sButtonOpenPdf.Name = "sButtonOpenPdf";
             this.sButtonOpenPdf.Size = new System.Drawing.Size(110, 30);
             this.sButtonOpenPdf.TabIndex = 7;
@@ -510,17 +541,18 @@
             // 
             // sButtonOpenFromAcrobatReader
             // 
-            this.sButtonOpenFromAcrobatReader.Location = new System.Drawing.Point(124, 59);
+            this.sButtonOpenFromAcrobatReader.Location = new System.Drawing.Point(121, 59);
             this.sButtonOpenFromAcrobatReader.Name = "sButtonOpenFromAcrobatReader";
             this.sButtonOpenFromAcrobatReader.Size = new System.Drawing.Size(110, 30);
             this.sButtonOpenFromAcrobatReader.TabIndex = 8;
             this.sButtonOpenFromAcrobatReader.Text = "Открыть через\r\nAcrobat Reader";
+            this.sButtonOpenFromAcrobatReader.Click += new System.EventHandler(this.sButtonOpenFromAcrobatReader_Click);
             // 
             // sButtonAddNewFile
             // 
             this.sButtonAddNewFile.Image = global::EA.Properties.Resources.add_button;
             this.sButtonAddNewFile.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.sButtonAddNewFile.Location = new System.Drawing.Point(8, 23);
+            this.sButtonAddNewFile.Location = new System.Drawing.Point(5, 23);
             this.sButtonAddNewFile.Name = "sButtonAddNewFile";
             this.sButtonAddNewFile.Size = new System.Drawing.Size(110, 30);
             this.sButtonAddNewFile.TabIndex = 9;
@@ -530,7 +562,7 @@
             // buttonUpdateFileVersion
             // 
             this.buttonUpdateFileVersion.Image = global::EA.Properties.Resources.refresh_update1;
-            this.buttonUpdateFileVersion.Location = new System.Drawing.Point(8, 59);
+            this.buttonUpdateFileVersion.Location = new System.Drawing.Point(5, 59);
             this.buttonUpdateFileVersion.Name = "buttonUpdateFileVersion";
             this.buttonUpdateFileVersion.Size = new System.Drawing.Size(110, 30);
             this.buttonUpdateFileVersion.TabIndex = 10;
@@ -540,20 +572,22 @@
             // sButtonSaveOnComputer
             // 
             this.sButtonSaveOnComputer.Image = global::EA.Properties.Resources.arrow_download;
-            this.sButtonSaveOnComputer.Location = new System.Drawing.Point(240, 23);
+            this.sButtonSaveOnComputer.Location = new System.Drawing.Point(237, 23);
             this.sButtonSaveOnComputer.Name = "sButtonSaveOnComputer";
             this.sButtonSaveOnComputer.Size = new System.Drawing.Size(110, 30);
             this.sButtonSaveOnComputer.TabIndex = 11;
             this.sButtonSaveOnComputer.Text = "Сохранить \r\nна компьютере";
+            this.sButtonSaveOnComputer.Click += new System.EventHandler(this.sButtonSaveOnComputer_Click);
             // 
             // sButtonLoadHistory
             // 
             this.sButtonLoadHistory.Image = global::EA.Properties.Resources.list;
-            this.sButtonLoadHistory.Location = new System.Drawing.Point(356, 23);
+            this.sButtonLoadHistory.Location = new System.Drawing.Point(353, 23);
             this.sButtonLoadHistory.Name = "sButtonLoadHistory";
             this.sButtonLoadHistory.Size = new System.Drawing.Size(110, 30);
             this.sButtonLoadHistory.TabIndex = 12;
             this.sButtonLoadHistory.Text = "История \r\nобращений";
+            this.sButtonLoadHistory.Click += new System.EventHandler(this.sButtonLoadHistory_Click);
             // 
             // groupControl1
             // 
@@ -576,7 +610,7 @@
             // buttonEditFile
             // 
             this.buttonEditFile.Image = global::EA.Properties.Resources.document_text_edit;
-            this.buttonEditFile.Location = new System.Drawing.Point(356, 59);
+            this.buttonEditFile.Location = new System.Drawing.Point(353, 59);
             this.buttonEditFile.Name = "buttonEditFile";
             this.buttonEditFile.Size = new System.Drawing.Size(110, 30);
             this.buttonEditFile.TabIndex = 12;
@@ -586,7 +620,7 @@
             // buttonShowPrevFileVersion
             // 
             this.buttonShowPrevFileVersion.Image = global::EA.Properties.Resources.history;
-            this.buttonShowPrevFileVersion.Location = new System.Drawing.Point(240, 59);
+            this.buttonShowPrevFileVersion.Location = new System.Drawing.Point(237, 59);
             this.buttonShowPrevFileVersion.Name = "buttonShowPrevFileVersion";
             this.buttonShowPrevFileVersion.Size = new System.Drawing.Size(110, 30);
             this.buttonShowPrevFileVersion.TabIndex = 12;
@@ -596,7 +630,7 @@
             // buttonDeleteFile
             // 
             this.buttonDeleteFile.Image = global::EA.Properties.Resources.delete_button_error;
-            this.buttonDeleteFile.Location = new System.Drawing.Point(472, 23);
+            this.buttonDeleteFile.Location = new System.Drawing.Point(469, 23);
             this.buttonDeleteFile.Name = "buttonDeleteFile";
             this.buttonDeleteFile.Size = new System.Drawing.Size(110, 30);
             this.buttonDeleteFile.TabIndex = 12;
@@ -813,6 +847,7 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.splitContainerControl1);
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
@@ -820,6 +855,178 @@
             this.groupControl4.Size = new System.Drawing.Size(954, 471);
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "groupControl4";
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(2, 2);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl5);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl6);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(950, 467);
+            this.splitContainerControl1.SplitterPosition = 456;
+            this.splitContainerControl1.TabIndex = 0;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // gridControlFileViewLog
+            // 
+            this.gridControlFileViewLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlFileViewLog.Location = new System.Drawing.Point(2, 20);
+            this.gridControlFileViewLog.MainView = this.gridViewFileViewLog;
+            this.gridControlFileViewLog.Name = "gridControlFileViewLog";
+            this.gridControlFileViewLog.Size = new System.Drawing.Size(485, 445);
+            this.gridControlFileViewLog.TabIndex = 1;
+            this.gridControlFileViewLog.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewFileViewLog});
+            // 
+            // gridViewFileViewLog
+            // 
+            this.gridViewFileViewLog.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colCardId,
+            this.colFileId,
+            this.colFileName,
+            this.colUserLogin,
+            this.colMachineName,
+            this.colDate});
+            this.gridViewFileViewLog.GridControl = this.gridControlFileViewLog;
+            this.gridViewFileViewLog.Name = "gridViewFileViewLog";
+            this.gridViewFileViewLog.OptionsView.ShowGroupPanel = false;
+            // 
+            // colCardId
+            // 
+            this.colCardId.FieldName = "CardId";
+            this.colCardId.Name = "colCardId";
+            // 
+            // colFileId
+            // 
+            this.colFileId.FieldName = "FileId";
+            this.colFileId.Name = "colFileId";
+            // 
+            // colFileName
+            // 
+            this.colFileName.Caption = "Название документа";
+            this.colFileName.Name = "colFileName";
+            this.colFileName.Visible = true;
+            this.colFileName.VisibleIndex = 0;
+            this.colFileName.Width = 200;
+            // 
+            // colUserLogin
+            // 
+            this.colUserLogin.Caption = "Логин";
+            this.colUserLogin.FieldName = "UserLogin";
+            this.colUserLogin.Name = "colUserLogin";
+            this.colUserLogin.Visible = true;
+            this.colUserLogin.VisibleIndex = 1;
+            this.colUserLogin.Width = 136;
+            // 
+            // colMachineName
+            // 
+            this.colMachineName.Caption = "Имя компьютера";
+            this.colMachineName.FieldName = "MachineName";
+            this.colMachineName.Name = "colMachineName";
+            this.colMachineName.Visible = true;
+            this.colMachineName.VisibleIndex = 2;
+            this.colMachineName.Width = 136;
+            // 
+            // colDate
+            // 
+            this.colDate.Caption = "Дата";
+            this.colDate.FieldName = "Date";
+            this.colDate.Name = "colDate";
+            this.colDate.Visible = true;
+            this.colDate.VisibleIndex = 3;
+            this.colDate.Width = 140;
+            // 
+            // gridControlUserDownloadLog
+            // 
+            this.gridControlUserDownloadLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlUserDownloadLog.Location = new System.Drawing.Point(2, 20);
+            this.gridControlUserDownloadLog.MainView = this.gridViewUserDownloadLog;
+            this.gridControlUserDownloadLog.Name = "gridControlUserDownloadLog";
+            this.gridControlUserDownloadLog.Size = new System.Drawing.Size(452, 445);
+            this.gridControlUserDownloadLog.TabIndex = 1;
+            this.gridControlUserDownloadLog.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewUserDownloadLog});
+            // 
+            // gridViewUserDownloadLog
+            // 
+            this.gridViewUserDownloadLog.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8});
+            this.gridViewUserDownloadLog.GridControl = this.gridControlUserDownloadLog;
+            this.gridViewUserDownloadLog.Name = "gridViewUserDownloadLog";
+            this.gridViewUserDownloadLog.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.FieldName = "CardId";
+            this.gridColumn3.Name = "gridColumn3";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.FieldName = "FileId";
+            this.gridColumn4.Name = "gridColumn4";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Название документа";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 0;
+            this.gridColumn5.Width = 200;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Логин";
+            this.gridColumn6.FieldName = "UserLogin";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.Width = 136;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Имя компьютера";
+            this.gridColumn7.FieldName = "MachineName";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 2;
+            this.gridColumn7.Width = 136;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Дата";
+            this.gridColumn8.FieldName = "Date";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 3;
+            this.gridColumn8.Width = 140;
+            // 
+            // groupControl5
+            // 
+            this.groupControl5.Controls.Add(this.gridControlUserDownloadLog);
+            this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl5.Location = new System.Drawing.Point(0, 0);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.Size = new System.Drawing.Size(456, 467);
+            this.groupControl5.TabIndex = 2;
+            this.groupControl5.Text = "Просмотры";
+            // 
+            // groupControl6
+            // 
+            this.groupControl6.Controls.Add(this.gridControlFileViewLog);
+            this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl6.Location = new System.Drawing.Point(0, 0);
+            this.groupControl6.Name = "groupControl6";
+            this.groupControl6.Size = new System.Drawing.Size(489, 467);
+            this.groupControl6.TabIndex = 2;
+            this.groupControl6.Text = "Загрузка";
             // 
             // EditForm
             // 
@@ -867,6 +1074,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
+            this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlFileViewLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewFileViewLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlUserDownloadLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewUserDownloadLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
+            this.groupControl6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -937,5 +1155,24 @@
         private DevExpress.XtraEditors.SimpleButton buttonShowPrevFileVersion;
         private DevExpress.XtraEditors.SimpleButton buttonEditFile;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraGrid.GridControl gridControlFileViewLog;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewFileViewLog;
+        private DevExpress.XtraGrid.Columns.GridColumn colCardId;
+        private DevExpress.XtraGrid.Columns.GridColumn colFileId;
+        private DevExpress.XtraGrid.Columns.GridColumn colFileName;
+        private DevExpress.XtraGrid.Columns.GridColumn colUserLogin;
+        private DevExpress.XtraGrid.Columns.GridColumn colMachineName;
+        private DevExpress.XtraGrid.Columns.GridColumn colDate;
+        private DevExpress.XtraGrid.GridControl gridControlUserDownloadLog;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewUserDownloadLog;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private DevExpress.XtraEditors.GroupControl groupControl6;
     }
 }
