@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraTreeList;
-using DevExpress.XtraTreeList.Menu;
 using DevExpress.XtraTreeList.Nodes;
-using DevExpress.XtraTreeList.ViewInfo;
 using EA.Data;
 using EA.Data.Enums;
 using EA.Model;
@@ -22,7 +19,7 @@ namespace EA.Form
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, System.EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             RefreshFolders();
         }

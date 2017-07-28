@@ -24,10 +24,12 @@ namespace EA.Models.SqlModels
                 List<FileViewLog> fileViewLog = new List<FileViewLog>();
 
                 string query =
-                    $@"SELECT fv.[id], fv.[card_id], fv.[file_id], fv.[user_login], fv.[machine_name], fv.[date], f.name as 'file_name'
-                                    FROM [EA2015].[dbo].[JFileView] fv
-                                    LEFT JOIN [EA2015].[dbo].[RFile] f on f.id = fv.[file_id]
-                                    WHERE fv.card_id = {cardId}";
+                    $@"SELECT fv.[id], fv.[card_id], fv.[file_id], fv.[user_login], fv.[machine_name], fv.[date]
+                            , f.name as 'file_name', fvt.name as 'file_view_type_name', f.[extention] as 'file_extention'
+                        FROM [EA2015].[dbo].[JFileView] fv
+                        LEFT JOIN [EA2015].[dbo].[RFile] f on f.id = fv.[file_id]
+						LEFT JOIN [EA2015].[dbo].[CFileViewType] fvt on fvt.id = fv.file_view_type_id
+                        WHERE fv.card_id = {cardId}";
 
                 DataTable table = new SqlHealper().ExecuteTable(query, new SqlConnectionString().GetWinAuthConnectionString());
 
@@ -42,7 +44,9 @@ namespace EA.Models.SqlModels
                         FileId = Convert.ToInt32(row["file_id"]),
                         FileName = row["file_name"] as string,
                         MachineName = row["machine_name"] as string,
-                        UserLogin = row["user_login"] as string
+                        UserLogin = row["user_login"] as string,
+                        ViewTypeName = row["file_view_type_name"] as string,
+                        FileExtention = row["file_extention"] as string
                     });
                 }
                 return fileViewLog;
@@ -55,13 +59,27 @@ namespace EA.Models.SqlModels
         }
         #endregion
 
-        public bool SaveFileViewLog(int cardId, int fileId)
+
+
+        /// <summary>
+        /// Запись лого в БД
+        /// @file_view_type_id = 1 - просмотр
+        /// @file_view_type_id 2 - сохранение на диск
+        /// </summary>
+        /// <param name="cardId"></param>
+        /// <param name="fileId"></param>
+        /// <param name="viewTypeId"></param>
+        /// <returns></returns>
+        public bool SaveFileViewLog(int cardId, int fileId, int viewTypeId)
         #region
         {
             try
             {
-                string query = @" INSERT INTO [EA2015].[dbo].[JFileView] ([card_id], [file_id], [user_login], [machine_name]) 
-                                    VALUES(@card_id, @file_id, @user_login, @machine_name)";
+                if (cardId == 0) return false;
+
+
+                string query = @" INSERT INTO [EA2015].[dbo].[JFileView] ([card_id], [file_id], [user_login], [machine_name], [file_view_type_id]) 
+                                    VALUES(@card_id, @file_id, @user_login, @machine_name, @file_view_type_id)";
 
 
                 using (SqlConnection connection = new SqlConnection(new SqlConnectionString().GetWinAuthConnectionString()))
@@ -72,7 +90,7 @@ namespace EA.Models.SqlModels
                         cmd.Parameters.AddWithValue("@file_id", fileId);
                         cmd.Parameters.AddWithValue("@user_login", Environment.UserName);
                         cmd.Parameters.AddWithValue("@machine_name", Environment.MachineName);
-
+                        cmd.Parameters.AddWithValue("@file_view_type_id", viewTypeId);
                         connection.Open();
                         cmd.ExecuteNonQuery();
                         return true;

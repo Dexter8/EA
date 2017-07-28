@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EA.Data
 {
@@ -13,8 +10,11 @@ namespace EA.Data
         public int CardId { get; set; }
         public int FileId { get; set; }
         public string FileName { get; set; }
+        public string FileExtention { get; set; }
         public string UserLogin { get; set; }
         public string MachineName { get; set; }
         public DateTime? Date { get; set; }
+        public string ViewTypeName { get; set; }
+
     }
 }

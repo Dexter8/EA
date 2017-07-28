@@ -342,6 +342,7 @@
             this.ClientSize = new System.Drawing.Size(790, 508);
             this.Controls.Add(this.pdfViewer1);
             this.Controls.Add(this.ribbonControl1);
+            this.DoubleBuffered = true;
             this.Name = "PdfViewer";
             this.ShowInTaskbar = false;
             this.Text = "PdfViewer";

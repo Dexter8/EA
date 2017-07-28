@@ -96,43 +96,31 @@ namespace EA.Model
         /// Получить список карточек по обозначению
         /// </summary>
         public List<Card> GetCardsByCode(List<Card> cards, string code)
-
             #region
 
         {
             try
             {
                 cards.Clear();
-                string query = @"SELECT [id]
-                                              ,[folder_id]
-                                              ,[card_type_id]
-                                              ,[card_type_name]
-                                              ,[code]
-                                              ,[name]
-                                              ,[description]
+                string query = @"SELECT [id],[folder_id],[card_type_id],[card_type_name],[code],[name],[description]
                                               ,[owner_login]
-                                              ,[creation_date]
+                                              ,[create_date]
                                               ,[last_edit_date]
                                               ,[start_develop_date]
                                               ,[end_develop_date]
                                               ,[exist_scan]
                                               ,[exist_2d]
                                               ,[exist_3d]
-                                             FROM [EA2015].[dbo].[card_view] where [code] like '%@codeParam%' order by code";
+                                             FROM [EA2015].[dbo].[card_view] where [code] like @codeParam order by code";
 
                 DataTable cardsTable = new DataTable();
 
 
-                using (
-                    SqlConnection connection = new SqlConnection(new SqlConnectionString().GetWinAuthConnectionString())
-                    )
+                using (SqlConnection connection = new SqlConnection(new SqlConnectionString().GetWinAuthConnectionString()))
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        var Param = new SqlParameter("@codeParam", SqlDbType.NVarChar);
-                        Param.Value = code;
-                        command.Parameters.Add(Param);
-
+                        command.Parameters.AddWithValue("@codeParam", "%" + code + "%");
                         connection.Open();
                         cardsTable.Load(command.ExecuteReader());
 
@@ -170,6 +158,9 @@ namespace EA.Model
         }
 
         #endregion
+
+
+
 
         public Card GetCardData(int cardId)
         #region

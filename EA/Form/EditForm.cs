@@ -4,8 +4,10 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EA.Data;
 using EA.Data.Enums;
+using EA.Form.CardForm;
 using EA.Form.FileForm;
 using EA.Model;
+using EA.Models;
 using EA.Models.SqlModels;
 
 namespace EA.Form
@@ -29,12 +31,13 @@ namespace EA.Form
         private void CardEditForm_Load(object sender, EventArgs e)
         {
             repItemLookUpEditStatus.DataSource = new FileModel().GetStatusList();
-
+            
 
             //Редактирование
             if (_mode == CardEditModeEnum.Edit && _cardId != 0)
             {
                 _card = new CardModel().GetCardData(_cardId);
+                
                 FillEditors();
                 RefreshFiles();
             }
@@ -52,6 +55,7 @@ namespace EA.Form
         {
             _files = new FileModel().GetCardFiles(_cardId);
             gridControlFiles.DataSource = _files;
+            gridControlFileViewLog.DataSource = new FileViewSqlModel().GetFileViewLog(_cardId);
         }
 
 
@@ -155,12 +159,10 @@ namespace EA.Form
 
             int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
             //запись просмотра в журнал
-            if (_cardId != 0)
-            {
-                new FileViewSqlModel().SaveFileViewLog(_cardId, fileId);
-            }
+            new FileViewSqlModel().SaveFileViewLog(_cardId, fileId, 1);
 
             new PdfViewer(fileId).ShowDialog();
+            RefreshFiles();
         }
 
         private void sButtonLoadFile_Click(object sender, EventArgs e)
@@ -177,15 +179,8 @@ namespace EA.Form
             if (!IsFileEnable()) return;
 
             string fileName = gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Name") as string;
-            string message = "Удалить документ " + fileName;
-            string caption = "Удаление документа";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-
-            result = XtraMessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            if (new DialogModel().ShowYesNoMessageBox("Удалить документ " + fileName, "Удаление документа"))
             {
-
                 int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
                 new FileModel().DeleteFile(fileId);
                 RefreshFiles();
@@ -241,12 +236,25 @@ namespace EA.Form
         private void sButtonSaveOnComputer_Click(object sender, EventArgs e)
         {
             if (!IsFileEnable()) return;
+            int fileId = Convert.ToInt32(gridViewFiles.GetRowCellValue(gridViewFiles.FocusedRowHandle, "Id").ToString());
+            new FileViewSqlModel().SaveFileViewLog(_cardId, fileId, 2);
+            RefreshFiles();
         }
 
         private void sButtonLoadHistory_Click(object sender, EventArgs e)
         {
             if (!IsFileEnable()) return;
             new FileViewLogForm(_cardId).ShowDialog();
+        }
+
+        private void groupControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonAttachCard_Click(object sender, EventArgs e)
+        {
+            new AttachCardForm().ShowDialog();
         }
     }
 }
