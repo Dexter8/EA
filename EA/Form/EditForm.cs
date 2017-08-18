@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using EA.Data;
 using EA.Data.Enums;
 using EA.Form.CardForm;
@@ -9,16 +10,17 @@ using EA.Form.FileForm;
 using EA.Model;
 using EA.Models;
 using EA.Models.SqlModels;
+using EA.Report;
 
 namespace EA.Form
 {
-    public partial class EditForm : XtraForm
-    {
+    public partial class EditForm : XtraForm{
         private CardEditModeEnum _mode;
         private int _cardId;
         private int? _folderId;
         private Card _card;
-        private List<FileData> _files; 
+        private List<FileData> _files;
+        private List<CardLink> _cardLinks; 
 
         public EditForm(CardEditModeEnum mode ,int cardId, int? folderId)
         {
@@ -40,16 +42,16 @@ namespace EA.Form
                 
                 FillEditors();
                 RefreshFiles();
+                RefreshCardLinks();
             }
 
             //Новая карточка
             if (_mode == CardEditModeEnum.New)
             {
                 _cardId = 0;
-
-
             }
         }
+
 
         private void RefreshFiles()
         {
@@ -58,8 +60,13 @@ namespace EA.Form
             gridControlFileViewLog.DataSource = new FileViewSqlModel().GetFileViewLog(_cardId);
         }
 
+        private void RefreshCardLinks()
+        {
+            _cardLinks = new AttachCardSqlModel().GetAttachCards(_cardId);
+            gridControlCardsLink.DataSource = _cardLinks;
+        }
 
-        
+
 
         private void FillEditors()
         {
@@ -146,12 +153,7 @@ namespace EA.Form
         }
         #endregion
         
-        private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            SaveCard();
-            Close();
-        }
-
+     
         
         private void sButtonOpenPdf_Click(object sender, EventArgs e)
         {
@@ -254,7 +256,43 @@ namespace EA.Form
 
         private void buttonAttachCard_Click(object sender, EventArgs e)
         {
-            new AttachCardForm().ShowDialog();
+            if (_cardId == 0) SaveCard();
+
+            new AttachCardForm(_cardId).ShowDialog();
+            RefreshCardLinks();
+        }
+
+        private void barButtonSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (SaveCard())
+            Close();
+        }
+
+        private void buttonDeleteLink_Click(object sender, EventArgs e)
+        {
+            if (gridViewFiles.FocusedRowHandle < 0)
+            {
+                XtraMessageBox.Show("Отсуствует записи для удаление!");
+                return;
+            }
+            
+            int id = Convert.ToInt32(gridViewCardsLink.GetRowCellValue(gridViewCardsLink.FocusedRowHandle, "Id"));
+            string code = gridViewCardsLink.GetRowCellValue(gridViewCardsLink.FocusedRowHandle, "Code") as string;
+
+            if (new DialogModel().ShowYesNoMessageBox("Удалить запись " + code + " ?", "Удаление"))
+            {
+                new AttachCardSqlModel().DeleteLinkCard(id);
+                RefreshCardLinks();
+            }
+        }
+
+        private void buttonPrintLinks_Click(object sender, EventArgs e)
+        {
+            CardLinkReport report = new CardLinkReport();
+            report.DataSource = _cardLinks;
+            report.ShowPreview();
+
+            //new ReportViewForm().ShowDialog();
         }
     }
 }

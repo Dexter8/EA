@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using EA.Form;
-using EA.Model.SqlModels;
 
 namespace EA
 {
@@ -21,8 +20,8 @@ namespace EA
 
             DevExpress.Skins.SkinManager.EnableFormSkins();
             /*System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ru");
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("ru-RU");*/
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Visual Studio 2013 Blue";
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalizatfeafeadsxfvfaewfion.CultureInfo("ru-RU");*/
+            //DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Visual Studio 2013 Blue";
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

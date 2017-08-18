@@ -102,15 +102,9 @@ namespace EA.Model
             try
             {
                 cards.Clear();
-                string query = @"SELECT [id],[folder_id],[card_type_id],[card_type_name],[code],[name],[description]
-                                              ,[owner_login]
-                                              ,[create_date]
-                                              ,[last_edit_date]
-                                              ,[start_develop_date]
-                                              ,[end_develop_date]
-                                              ,[exist_scan]
-                                              ,[exist_2d]
-                                              ,[exist_3d]
+                string query = @"SELECT [id], [folder_id], [card_type_id], [card_type_name], [code], [name], [description]
+                                              ,[owner_login], [create_date], [last_edit_date], [start_develop_date]
+                                              ,[end_develop_date], [exist_scan], [exist_2d], [exist_3d]
                                              FROM [EA2015].[dbo].[card_view] where [code] like @codeParam order by code";
 
                 DataTable cardsTable = new DataTable();
@@ -154,7 +148,6 @@ namespace EA.Model
                 new ErrorSqlModel().WriteErrorOnSql(ex);
                 return null;
             }
-
         }
 
         #endregion
@@ -226,7 +219,7 @@ namespace EA.Model
                         new SqlConnectionString().GetWinAuthConnectionString());
                 if (table.Rows.Count > 0)
                 {
-                    XtraMessageBox.Show($"Карточка с кодом {card.Code} уже существует");
+                    XtraMessageBox.Show($"Карточка {card.Code} уже существует");
                     return 0;
                 }
 
@@ -300,6 +293,9 @@ namespace EA.Model
         }
         #endregion
 
+
+
+        
 
     }
 }

@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using EA.Data;
 using EA.Model;
 using EA.Models;
+using EA.Models.SqlModels;
 
 namespace EA.Form.CardForm
 {
-    public partial class AttachCardForm : DevExpress.XtraEditors.XtraForm
+    public partial class AttachCardForm : XtraForm
     {
-        public AttachCardForm()
+        private readonly int _parentCardId;
+
+        public AttachCardForm(int parentCardId)
         {
+            _parentCardId = parentCardId;
             InitializeComponent();
         }
 
@@ -52,7 +50,11 @@ namespace EA.Form.CardForm
             }
             string cardCode = gridViewCards.GetRowCellValue(gridViewCards.FocusedRowHandle, "Code") as string;
             new DialogModel().ShowYesNoMessageBox("Присоединить карточку " + cardCode, "Присоединение карточки");
-            int cardId = Convert.ToInt32(gridViewCards.GetRowCellValue(gridViewCards.FocusedRowHandle, "Id").ToString());
+            int cardId = Convert.ToInt32(gridViewCards.GetRowCellValue(gridViewCards.FocusedRowHandle, "CardId"));
+
+            if (new AttachCardSqlModel().AttachCard(cardId, _parentCardId)) Close();
+
+
         }
 
         

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditEndDevDate = new DevExpress.XtraEditors.DateEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -79,22 +79,23 @@
             this.buttonShowPrevFileVersion = new DevExpress.XtraEditors.SimpleButton();
             this.buttonDeleteFile = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControlCards = new DevExpress.XtraGrid.GridControl();
-            this.gridViewCards = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlCardsLink = new DevExpress.XtraGrid.GridControl();
+            this.gridViewCardsLink = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreateDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colExistScan = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colExist3D = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colExist2D = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.buttonDeleteLink = new DevExpress.XtraEditors.SimpleButton();
+            this.buttonPrintLinks = new DevExpress.XtraEditors.SimpleButton();
             this.buttonAttachCard = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
@@ -123,14 +124,15 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlCards)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlCardsLink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCardsLink)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
@@ -226,18 +228,18 @@
             // 
             this.barStaticItemCreateUserLogin.Id = 4;
             this.barStaticItemCreateUserLogin.Name = "barStaticItemCreateUserLogin";
-            toolTipItem1.Text = "Кто создал";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barStaticItemCreateUserLogin.SuperTip = superToolTip1;
+            toolTipItem3.Text = "Кто создал";
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barStaticItemCreateUserLogin.SuperTip = superToolTip3;
             this.barStaticItemCreateUserLogin.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemCreateDate
             // 
             this.barStaticItemCreateDate.Id = 6;
             this.barStaticItemCreateDate.Name = "barStaticItemCreateDate";
-            toolTipItem2.Text = "Дата создания";
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barStaticItemCreateDate.SuperTip = superToolTip2;
+            toolTipItem4.Text = "Дата создания";
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barStaticItemCreateDate.SuperTip = superToolTip4;
             this.barStaticItemCreateDate.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
@@ -622,10 +624,12 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.listBoxControl1);
             this.groupControl2.Controls.Add(this.labelControl6);
             this.groupControl2.Controls.Add(this.textEditCode);
             this.groupControl2.Controls.Add(this.dateEditEndDevDate);
             this.groupControl2.Controls.Add(this.labelControl1);
+            this.groupControl2.Controls.Add(this.labelControl4);
             this.groupControl2.Controls.Add(this.labelControl5);
             this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.dateEditStartDevDate);
@@ -637,6 +641,26 @@
             this.groupControl2.Size = new System.Drawing.Size(954, 201);
             this.groupControl2.TabIndex = 13;
             this.groupControl2.Text = "Данные";
+            // 
+            // listBoxControl1
+            // 
+            this.listBoxControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl1.Location = new System.Drawing.Point(317, 144);
+            this.listBoxControl1.Name = "listBoxControl1";
+            this.listBoxControl1.Size = new System.Drawing.Size(632, 50);
+            this.listBoxControl1.TabIndex = 12;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Appearance.Options.UseForeColor = true;
+            this.labelControl4.Location = new System.Drawing.Point(261, 147);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(50, 16);
+            this.labelControl4.TabIndex = 9;
+            this.labelControl4.Text = "Заказы";
             // 
             // xtraTabControl1
             // 
@@ -668,9 +692,9 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.gridControlCards);
-            this.groupControl3.Controls.Add(this.simpleButton2);
-            this.groupControl3.Controls.Add(this.simpleButton3);
+            this.groupControl3.Controls.Add(this.gridControlCardsLink);
+            this.groupControl3.Controls.Add(this.buttonDeleteLink);
+            this.groupControl3.Controls.Add(this.buttonPrintLinks);
             this.groupControl3.Controls.Add(this.buttonAttachCard);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
@@ -680,37 +704,60 @@
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "groupControl3";
             // 
-            // gridControlCards
+            // gridControlCardsLink
             // 
-            this.gridControlCards.Location = new System.Drawing.Point(11, 34);
-            this.gridControlCards.MainView = this.gridViewCards;
-            this.gridControlCards.Name = "gridControlCards";
-            this.gridControlCards.Size = new System.Drawing.Size(936, 432);
-            this.gridControlCards.TabIndex = 1;
-            this.gridControlCards.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewCards});
+            this.gridControlCardsLink.Location = new System.Drawing.Point(11, 34);
+            this.gridControlCardsLink.MainView = this.gridViewCardsLink;
+            this.gridControlCardsLink.Name = "gridControlCardsLink";
+            this.gridControlCardsLink.Size = new System.Drawing.Size(936, 432);
+            this.gridControlCardsLink.TabIndex = 1;
+            this.gridControlCardsLink.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewCardsLink});
             // 
-            // gridViewCards
+            // gridViewCardsLink
             // 
-            this.gridViewCards.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewCardsLink.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
-            this.colTypeName,
             this.colCode,
             this.gridColumn2,
+            this.colTypeName,
             this.colCreateDate,
-            this.colExistScan,
-            this.colExist3D,
-            this.colExist2D});
-            this.gridViewCards.GridControl = this.gridControlCards;
-            this.gridViewCards.Name = "gridViewCards";
-            this.gridViewCards.OptionsView.ShowGroupPanel = false;
+            this.gridColumn9,
+            this.gridColumn10});
+            this.gridViewCardsLink.GridControl = this.gridControlCardsLink;
+            this.gridViewCardsLink.Name = "gridViewCardsLink";
+            this.gridViewCardsLink.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Id";
-            this.gridColumn1.FieldName = "CardId";
+            this.gridColumn1.FieldName = "Id";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowFocus = false;
             this.gridColumn1.Width = 50;
+            // 
+            // colCode
+            // 
+            this.colCode.Caption = "Обозначение";
+            this.colCode.FieldName = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.OptionsColumn.AllowEdit = false;
+            this.colCode.OptionsColumn.AllowFocus = false;
+            this.colCode.OptionsColumn.ReadOnly = true;
+            this.colCode.Visible = true;
+            this.colCode.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Название";
+            this.gridColumn2.FieldName = "Name";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.AllowFocus = false;
+            this.gridColumn2.OptionsColumn.ReadOnly = true;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
             // 
             // colTypeName
             // 
@@ -722,29 +769,7 @@
             this.colTypeName.OptionsColumn.AllowFocus = false;
             this.colTypeName.OptionsColumn.ReadOnly = true;
             this.colTypeName.Visible = true;
-            this.colTypeName.VisibleIndex = 0;
-            // 
-            // colCode
-            // 
-            this.colCode.Caption = "Обозначение";
-            this.colCode.FieldName = "Code";
-            this.colCode.Name = "colCode";
-            this.colCode.OptionsColumn.AllowEdit = false;
-            this.colCode.OptionsColumn.AllowFocus = false;
-            this.colCode.OptionsColumn.ReadOnly = true;
-            this.colCode.Visible = true;
-            this.colCode.VisibleIndex = 1;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Название";
-            this.gridColumn2.FieldName = "Name";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowEdit = false;
-            this.gridColumn2.OptionsColumn.AllowFocus = false;
-            this.gridColumn2.OptionsColumn.ReadOnly = true;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.colTypeName.VisibleIndex = 2;
             // 
             // colCreateDate
             // 
@@ -752,65 +777,46 @@
             this.colCreateDate.FieldName = "CreateDate";
             this.colCreateDate.MaxWidth = 90;
             this.colCreateDate.Name = "colCreateDate";
+            this.colCreateDate.OptionsColumn.AllowEdit = false;
+            this.colCreateDate.OptionsColumn.AllowFocus = false;
             this.colCreateDate.Visible = true;
             this.colCreateDate.VisibleIndex = 3;
             // 
-            // colExistScan
+            // gridColumn9
             // 
-            this.colExistScan.Caption = "Скан";
-            this.colExistScan.FieldName = "ExistScan";
-            this.colExistScan.MaxWidth = 35;
-            this.colExistScan.Name = "colExistScan";
-            this.colExistScan.OptionsColumn.AllowEdit = false;
-            this.colExistScan.OptionsColumn.AllowFocus = false;
-            this.colExistScan.OptionsColumn.ReadOnly = true;
-            this.colExistScan.Visible = true;
-            this.colExistScan.VisibleIndex = 4;
-            this.colExistScan.Width = 25;
+            this.gridColumn9.Caption = "CardId";
+            this.gridColumn9.FieldName = "CardId";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
+            this.gridColumn9.OptionsColumn.AllowFocus = false;
             // 
-            // colExist3D
+            // gridColumn10
             // 
-            this.colExist3D.Caption = "3D";
-            this.colExist3D.FieldName = "Exist3D";
-            this.colExist3D.MaxWidth = 35;
-            this.colExist3D.Name = "colExist3D";
-            this.colExist3D.OptionsColumn.AllowEdit = false;
-            this.colExist3D.OptionsColumn.AllowFocus = false;
-            this.colExist3D.OptionsColumn.ReadOnly = true;
-            this.colExist3D.Visible = true;
-            this.colExist3D.VisibleIndex = 5;
-            this.colExist3D.Width = 25;
+            this.gridColumn10.Caption = "CardParentId";
+            this.gridColumn10.FieldName = "CardParentId";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.AllowFocus = false;
             // 
-            // colExist2D
+            // buttonDeleteLink
             // 
-            this.colExist2D.Caption = "2D";
-            this.colExist2D.FieldName = "Exist2D";
-            this.colExist2D.MaxWidth = 35;
-            this.colExist2D.Name = "colExist2D";
-            this.colExist2D.OptionsColumn.AllowEdit = false;
-            this.colExist2D.OptionsColumn.AllowFocus = false;
-            this.colExist2D.OptionsColumn.ReadOnly = true;
-            this.colExist2D.Visible = true;
-            this.colExist2D.VisibleIndex = 6;
-            this.colExist2D.Width = 20;
+            this.buttonDeleteLink.Image = global::EA.Properties.Resources.delete_button_error;
+            this.buttonDeleteLink.Location = new System.Drawing.Point(118, 5);
+            this.buttonDeleteLink.Name = "buttonDeleteLink";
+            this.buttonDeleteLink.Size = new System.Drawing.Size(101, 23);
+            this.buttonDeleteLink.TabIndex = 0;
+            this.buttonDeleteLink.Text = "Удалить";
+            this.buttonDeleteLink.Click += new System.EventHandler(this.buttonDeleteLink_Click);
             // 
-            // simpleButton2
+            // buttonPrintLinks
             // 
-            this.simpleButton2.Image = global::EA.Properties.Resources.delete_button_error;
-            this.simpleButton2.Location = new System.Drawing.Point(118, 5);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(101, 23);
-            this.simpleButton2.TabIndex = 0;
-            this.simpleButton2.Text = "Удалить";
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Image = global::EA.Properties.Resources.print;
-            this.simpleButton3.Location = new System.Drawing.Point(225, 5);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(101, 23);
-            this.simpleButton3.TabIndex = 0;
-            this.simpleButton3.Text = "Печать";
+            this.buttonPrintLinks.Image = global::EA.Properties.Resources.print;
+            this.buttonPrintLinks.Location = new System.Drawing.Point(225, 5);
+            this.buttonPrintLinks.Name = "buttonPrintLinks";
+            this.buttonPrintLinks.Size = new System.Drawing.Size(101, 23);
+            this.buttonPrintLinks.TabIndex = 0;
+            this.buttonPrintLinks.Text = "Печать";
+            this.buttonPrintLinks.Click += new System.EventHandler(this.buttonPrintLinks_Click);
             // 
             // buttonAttachCard
             // 
@@ -957,7 +963,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Карточка чертежа";
             this.Load += new System.EventHandler(this.CardEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDevDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDevDate.Properties)).EndInit();
@@ -976,14 +981,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlCards)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlCardsLink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCardsLink)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
@@ -1041,16 +1047,13 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.SimpleButton buttonAttachCard;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraGrid.GridControl gridControlCards;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCards;
+        private DevExpress.XtraEditors.SimpleButton buttonDeleteLink;
+        private DevExpress.XtraGrid.GridControl gridControlCardsLink;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCardsLink;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn colTypeName;
         private DevExpress.XtraGrid.Columns.GridColumn colCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn colExistScan;
-        private DevExpress.XtraGrid.Columns.GridColumn colExist3D;
-        private DevExpress.XtraGrid.Columns.GridColumn colExist2D;
         private DevExpress.XtraGrid.Columns.GridColumn colCreateDate;
         private DevExpress.XtraBars.BarStaticItem barStaticItemCreateUserLogin;
         private DevExpress.XtraBars.BarStaticItem barStaticItemCreateDate;
@@ -1058,7 +1061,7 @@
         private DevExpress.XtraEditors.SimpleButton buttonDeleteFile;
         private DevExpress.XtraEditors.SimpleButton buttonShowPrevFileVersion;
         private DevExpress.XtraEditors.SimpleButton buttonEditFile;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton buttonPrintLinks;
         private DevExpress.XtraGrid.GridControl gridControlFileViewLog;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewFileViewLog;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -1068,5 +1071,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn colViewTypeName;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

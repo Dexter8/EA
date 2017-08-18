@@ -6,6 +6,7 @@ using System.Data.SqlTypes;
 using System.IO;
 using DevExpress.XtraEditors;
 using EA.Data;
+using EA.Data.Enums;
 using Sqllib.AdoNetSqlService;
 
 namespace EA.Model
@@ -42,6 +43,38 @@ namespace EA.Model
         }
         #endregion
 
+
+        public bool ChangeFileStatus(int fileId, FileStatus fileStatus)
+        #region
+        {
+            try
+            {
+                int statusId = 0;
+
+                if (fileStatus == FileStatus.Approved)
+                {
+                    statusId = 16;
+                }
+                else if (fileStatus == FileStatus.Edit)
+                {
+                    statusId = 2;
+                }
+                else if (fileStatus == FileStatus.New)
+                {
+                    statusId = 1;
+                }
+
+                string query = $@"UPDATE [EA2015].[dbo].[RFile] SET [status_id] = {statusId} WHERE Id = {fileId}";
+                new SqlHealper().ExecuteNonQuery(query, new SqlConnectionString().GetWinAuthConnectionString());
+                return true;
+            }
+            catch (Exception ex)
+            {
+                new ErrorSqlModel().WriteErrorOnSql(ex);
+                return false;
+            }
+        }
+        #endregion
 
 
         public List<FileData> GetCardFiles(int cardId)

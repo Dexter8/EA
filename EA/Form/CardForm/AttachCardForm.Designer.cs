@@ -121,6 +121,8 @@
             this.colId.Caption = "Id";
             this.colId.FieldName = "CardId";
             this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 6;
             this.colId.Width = 50;
             // 
             // colTypeName
