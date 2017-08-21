@@ -12,8 +12,11 @@ namespace EA.Form.FileForm
 {
     public partial class FileStatusEditForm : DevExpress.XtraEditors.XtraForm
     {
-        public FileStatusEditForm()
+        private readonly int _folderId;
+
+        public FileStatusEditForm(int folderId)
         {
+            _folderId = folderId;
             InitializeComponent();
         }
     }

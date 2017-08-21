@@ -44,6 +44,78 @@ namespace EA.Model
         #endregion
 
 
+        public List<PaparKind> GetPaparKings()
+        #region
+        {
+            List<PaparKind> papar = new List<PaparKind>();
+            string query = @"SELECT [id], [name] FROM [EA2015].[dbo].[CPaparKind]";
+            DataTable table = new DataTable();
+            try
+            {
+                table = new SqlHealper().ExecuteTable(query, new SqlConnectionString().GetWinAuthConnectionString());
+                foreach (DataRow row in table.Rows)
+                {
+                    papar.Add(new PaparKind()
+                    {
+                        Id = Convert.ToInt32(row["id"]),
+                        Name = row["name"] as string
+                    });
+                }
+                return papar;
+            }
+            catch (Exception ex)
+            {
+                new ErrorSqlModel().WriteErrorOnSql(ex);
+                return null;
+            }
+
+        }
+        #endregion
+
+
+
+        public List<FileData> GetFolderFiles(int folderId)
+        {
+            try
+            {
+                List<FileData> files = new List<FileData>();
+                string query = $@"SELECT f.[id]
+                              ,f.[parent_id]
+                              ,f.[file_content_id]
+                              ,f.[card_id]
+                              ,f.[file_type_id]
+                              ,f.[draft_type_id]
+                              ,f.[status_id]
+                              ,f.[name] as 'file_name'
+                              ,f.[description] as 'file_description'
+                              ,f.[extention] as 'file_extention'
+                              ,f.[size] as 'file_size'
+                              ,f.[version]
+                              ,f.[last_edit_date]
+                              ,f.[expire_date]
+	                          ,s.id as 'status_id'
+	                          ,s.name as 'status_name'
+                          FROM [EA2015].[dbo].[RFile] f 
+                          LEFT JOIN [EA2015].[dbo].[Card] c on c.id = f.card_id
+                          LEFT JOIN [EA2015].[dbo].[Folder] fl on fl.id = c.folder_id
+                          LEFT JOIN [EA2015].[dbo].[CStatus] s on s.id = f.status_id
+                          where fl.id = {folderId}";
+                DataTable table = new DataTable();
+
+                table = new SqlHealper().ExecuteTable(query, new SqlConnectionString().GetWinAuthConnectionString());
+                foreach (DataRow row in table.Rows)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                new ErrorSqlModel().WriteErrorOnSql(ex);
+                return null;
+            }
+        } 
+
+
         public bool ChangeFileStatus(int fileId, FileStatus fileStatus)
         #region
         {

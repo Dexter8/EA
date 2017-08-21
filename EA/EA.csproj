@@ -93,6 +93,7 @@
     <Compile Include="Data\FileData.cs" />
     <Compile Include="Data\FileViewLog.cs" />
     <Compile Include="Data\Folder.cs" />
+    <Compile Include="Data\PaparKind.cs" />
     <Compile Include="Data\StaticData\UserStaticData.cs" />
     <Compile Include="Data\Status.cs" />
     <Compile Include="Form\CardForm\AttachCardForm.cs">

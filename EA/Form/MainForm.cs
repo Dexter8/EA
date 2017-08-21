@@ -53,8 +53,7 @@ namespace EA.Form
                                                                         ,[description],[create_user_id],[create_date] as 'CreateDate'
                                                                         ,[start_develop_date],[end_develop_date],[card_type_name] ,[status_name],[status_short_name]
                                                                         ,[exist_scan] as 'ExistScan', [exist_2d] as 'Exist2D', [exist_3d] as 'Exist3D'
-                                                                        FROM [EA2015].[dbo].[View_Cards] where folder_id = {
-                            folderId}", connection);
+                                                                        FROM [EA2015].[dbo].[View_Cards] where folder_id = {folderId}", connection);
 
                 OleDbDataAdapter AdapterFiles =
                     new OleDbDataAdapter(
@@ -335,7 +334,9 @@ namespace EA.Form
 
         private void barButtonShowFileStatusEditForm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new FileStatusEditForm().ShowDialog();
+            int folderId = Convert.ToInt32(treeListFolders.FocusedNode.GetDisplayText(tcolId));
+            if (folderId == 0) return;
+            new FileStatusEditForm(folderId).ShowDialog();
         }
     }
 }

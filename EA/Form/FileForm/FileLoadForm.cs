@@ -27,6 +27,7 @@ namespace EA.Form
             lookUpEditFileType.Properties.DataSource = new FileModel().GetFileTypes();
             lookUpEditDraftTypes.Properties.DataSource = new DrawingModel().GetDraftTypes();
             lookUpEditStatus.Properties.DataSource = new FileModel().GetStatusList();
+            lookUpEditPaparKind.Properties.DataSource = new FileModel().GetPaparKings();
 
             if (_mode == Data.Enums.FileMode.New)
             {

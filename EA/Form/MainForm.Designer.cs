@@ -134,7 +134,7 @@
             this.col1StatusId.OptionsColumn.AllowEdit = false;
             this.col1StatusId.OptionsColumn.AllowFocus = false;
             this.col1StatusId.Visible = true;
-            this.col1StatusId.VisibleIndex = 4;
+            this.col1StatusId.VisibleIndex = 3;
             this.col1StatusId.Width = 70;
             // 
             // repItemLookUpEditStatus
@@ -211,7 +211,7 @@
             this.col1ExtentionName.OptionsColumn.AllowEdit = false;
             this.col1ExtentionName.OptionsColumn.AllowFocus = false;
             this.col1ExtentionName.Visible = true;
-            this.col1ExtentionName.VisibleIndex = 1;
+            this.col1ExtentionName.VisibleIndex = 0;
             this.col1ExtentionName.Width = 70;
             // 
             // repositoryItemImageComboBox1
@@ -238,8 +238,6 @@
             this.col1Id.Name = "col1Id";
             this.col1Id.OptionsColumn.AllowEdit = false;
             this.col1Id.OptionsColumn.AllowFocus = false;
-            this.col1Id.Visible = true;
-            this.col1Id.VisibleIndex = 0;
             // 
             // col1Name
             // 
@@ -249,7 +247,7 @@
             this.col1Name.OptionsColumn.AllowEdit = false;
             this.col1Name.OptionsColumn.AllowFocus = false;
             this.col1Name.Visible = true;
-            this.col1Name.VisibleIndex = 2;
+            this.col1Name.VisibleIndex = 1;
             this.col1Name.Width = 117;
             // 
             // col1Description
@@ -260,7 +258,7 @@
             this.col1Description.OptionsColumn.AllowEdit = false;
             this.col1Description.OptionsColumn.AllowFocus = false;
             this.col1Description.Visible = true;
-            this.col1Description.VisibleIndex = 3;
+            this.col1Description.VisibleIndex = 2;
             this.col1Description.Width = 150;
             // 
             // col1UploadLogin
@@ -271,7 +269,7 @@
             this.col1UploadLogin.OptionsColumn.AllowEdit = false;
             this.col1UploadLogin.OptionsColumn.AllowFocus = false;
             this.col1UploadLogin.Visible = true;
-            this.col1UploadLogin.VisibleIndex = 5;
+            this.col1UploadLogin.VisibleIndex = 4;
             this.col1UploadLogin.Width = 70;
             // 
             // col1UploadDate
@@ -282,7 +280,7 @@
             this.col1UploadDate.OptionsColumn.AllowEdit = false;
             this.col1UploadDate.OptionsColumn.AllowFocus = false;
             this.col1UploadDate.Visible = true;
-            this.col1UploadDate.VisibleIndex = 6;
+            this.col1UploadDate.VisibleIndex = 5;
             this.col1UploadDate.Width = 100;
             // 
             // col1Size
@@ -293,7 +291,7 @@
             this.col1Size.OptionsColumn.AllowEdit = false;
             this.col1Size.OptionsColumn.AllowFocus = false;
             this.col1Size.Visible = true;
-            this.col1Size.VisibleIndex = 7;
+            this.col1Size.VisibleIndex = 6;
             this.col1Size.Width = 70;
             // 
             // col1ExpireDate
@@ -304,7 +302,7 @@
             this.col1ExpireDate.OptionsColumn.AllowEdit = false;
             this.col1ExpireDate.OptionsColumn.AllowFocus = false;
             this.col1ExpireDate.Visible = true;
-            this.col1ExpireDate.VisibleIndex = 8;
+            this.col1ExpireDate.VisibleIndex = 7;
             this.col1ExpireDate.Width = 100;
             // 
             // col1FileContentId
@@ -312,8 +310,6 @@
             this.col1FileContentId.Caption = "FileContentId";
             this.col1FileContentId.FieldName = "FileContentId";
             this.col1FileContentId.Name = "col1FileContentId";
-            this.col1FileContentId.Visible = true;
-            this.col1FileContentId.VisibleIndex = 9;
             // 
             // gridControlCards
             // 
